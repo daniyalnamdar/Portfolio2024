@@ -68,6 +68,64 @@
   transition: 0.4s;
 }
 
+/* Modal CSS */
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  width: 800px;
+  height: 600px;
+  background-color: #12100b;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content h3 {
+  font-size: 28px;
+  font-weight: 600;
+}
+.modal-content h2 {
+  font-size: 38px;
+  font-weight: 800;
+  background: linear-gradient(270deg, #df8908 50%, #b415ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+.modal-content p {
+  color: #d4d4d4;
+  font-size: 24px;
+  line-height: 40px;
+  max-width: 800px;
+}
+
 @media (max-width: 768px) {
   .services {
     align-items: start;
@@ -100,5 +158,17 @@
   .services-container {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
+  }
+  .modal-content {
+    width: 550px;
+    height: 450px;
+  }
+  .modal-content h2 {
+    font-size: 28px;
+  }
+  .modal-content p {
+    font-size: 18px;
+    line-height: 32px;
+    max-width: 500px;
   }
 }

@@ -16,44 +16,46 @@ function About() {
         <div className="about-right">
           <div className="about-para">
             <p>
-              about me text i am so good about me text i am so good about me
-              text i am so good about me text i am so good
-            </p>
-            <p>
-              about me text i am so good about me text i am so good about me
-              text i am so goodabout me text i am so good
+              I believe in the dynamic nature of our world and the ever-evolving
+              technology landscape. To stay ahead of the curve, I consistently
+              embrace the opportunity to adapt and learn new things. As a
+              backend developer, I have honed my skills in PHP, particularly
+              with the Symfony framework. Additionally, I am familiar with
+              React, HTML, CSS, Python, and the Django platform, allowing me to
+              navigate various aspects of web development.
             </p>
           </div>
           <div className="about-skills">
             <div className="about-skill">
+              <p>PHP & Symfony</p> <hr style={{ width: "90%" }} />
+            </div>
+            <div className="about-skill">
+              <p>PYTHON & DJANGO </p>
+              <hr style={{ width: "60%" }} />
+            </div>
+            <div className="about-skill">
+              <p> React & MYSQL</p> <hr style={{ width: "80%" }} />
+            </div>
+            <div className="about-skill">
               <p>HTML & CSS</p> <hr style={{ width: "50%" }} />
-            </div>
-            <div className="about-skill">
-              <p>PHP & CSS</p> <hr style={{ width: "70%" }} />
-            </div>
-            <div className="about-skill">
-              <p>RECT & CSS</p> <hr style={{ width: "60%" }} />
-            </div>
-            <div className="about-skill">
-              <p>PYTHON & CSS</p> <hr style={{ width: "50%" }} />
             </div>
           </div>
         </div>
       </div>
       <div className="about-achievements">
         <div className="about-achievement">
-          <h1>10+</h1>
+          <h1>3+</h1>
           <p>YEARS OF EXPERIENCE</p>
         </div>
         <hr />
         <div className="about-achievement">
-          <h1>90+</h1>
-          <p>PROJECTS COMPLETED</p>
+          <h1>2+</h1>
+          <p>Research and Teaching Assistance</p>
         </div>
         <hr />
         <div className="about-achievement">
-          <h1>15+</h1>
-          <p>HAPPY FRIENDS</p>
+          <h1>10+</h1>
+          <p>COMPLETED PROJECTS</p>
         </div>
       </div>
     </div>

@@ -49,7 +49,7 @@ function Contact() {
             </div>
             <div className="contact-detail">
               <img src={call_icon} alt="" />
-              <p>d009294399494</p>
+              <p>+90 538815 7910</p>
             </div>
             <div className="contact-detail">
               <img src={location_icon} alt="" />

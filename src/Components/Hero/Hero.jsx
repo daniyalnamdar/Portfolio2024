@@ -12,8 +12,8 @@ function Hero() {
         <span>I'm Daniyal Namdar,</span> Backend developer based in Turkey.
       </h1>
       <p>
-        I am backend developer from Ankara, with nearly three years experience
-        with PHP and its framworks such as symfony and API Platform.
+        Welcome to my personal website! I'm an ambitious software developer with
+        a Master's degree in Electrical and Electronic Engineering.
       </p>
       <div className="hero-action">
         <div className="hero-connect">
