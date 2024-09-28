@@ -23,13 +23,4 @@ Navbar
 
 1. Create a Logo
    About
-1. theme pattern
 1. about profile
-   Services
-1. Services theme pattern
-1. services_data
-1. also we might need to redirect to a page when it click on read more
-   Mywork
-1. mywork_data
-1. show more can be deleted
-1. when click on each project either demo or the github page

@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
 import "./Navbar.css";
+// alex d to dani logo change
 import logo from "../../assets/logo.svg";
 import underline from "../../assets/nav_underline.svg";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import menu_open from "../../assets/menu_open.svg";
 import menu_close from "../../assets/menu_close.svg";
+import dani_logo from "../../assets/daniLogo.png";
 
 function Navbar() {
   const [menu, setMenu] = useState("home");
@@ -18,7 +20,7 @@ function Navbar() {
   };
   return (
     <div className="navbar">
-      <img src={logo} alt="" />
+      <img src={dani_logo} alt="" />
       <img src={menu_open} onClick={openMenu} alt="" className="nav-mob-open" />
       <ul ref={menuRef} className="nav-menu">
         <img
@@ -41,7 +43,7 @@ function Navbar() {
         </li>
         <li>
           <AnchorLink className="anchor-link" offset={50} href="#services">
-            <p onClick={() => setMenu("services")}>Services</p>
+            <p onClick={() => setMenu("services")}>Skills</p>
             {menu === "services" ? <img src={underline} alt="" /> : <></>}
           </AnchorLink>
         </li>

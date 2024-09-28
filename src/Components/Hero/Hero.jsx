@@ -1,8 +1,10 @@
 import React from "react";
 import "./Hero.css";
-import profile_img from "../../assets/profile_img.svg";
+// import profile_img from "../../assets/profile_img.svg";
+import profile_img from "../../assets/test_profile.png";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import CV from "../../assets/CV.pdf";
+import ME2 from "../../assets/ME2.png";
 
 function Hero() {
   return (

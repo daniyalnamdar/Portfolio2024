@@ -117,7 +117,9 @@
   justify-content: center;
   align-items: center;
   gap: 30p;
-  margin-top: 20px;
+  top: 600px;
+  left: 560px;
+  position: absolute;
 }
 .mywork-modal-buttons button {
   border: none;
@@ -126,8 +128,7 @@
   background: linear-gradient(264deg, #df8908 -5.09%, #b415ff 106.28%);
   font-size: 22px;
   padding: 20px 60px;
-  margin-top: 400px;
-  margin-right: 50px;
+  margin-right: 20px;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -177,7 +178,18 @@
   .mywork-modal-content p {
     font-size: 18px;
     line-height: 32px;
-    max-width: 300px;
+    max-width: 600px;
+  }
+
+  .mywork-modal-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30p;
+    top: 220px;
+    left: 160px;
+    position: absolute;
   }
   .mywork-modal-buttons button {
     margin-top: 300px;

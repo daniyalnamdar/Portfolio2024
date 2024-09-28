@@ -4,7 +4,16 @@
   flex-direction: column;
   gap: 35px;
 }
+/* .hero img {
+  max-width: fit-content;
+  max-height: fit-content;
+  margin-top: 5 0px;
+} */
+
 .hero img {
+  width: 350px; /* Adjust this size as needed */
+  height: fit-content;
+  /* border-radius: 50%; Optional, makes the image circular */
   margin-top: 5 0px;
 }
 .hero h1 {
