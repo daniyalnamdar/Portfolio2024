@@ -7,6 +7,7 @@ import project6_img from "../assets/project_6.svg";
 import newProject from "../assets/newProject.png";
 import mentora from "../assets/mentora.png";
 import secenek from "../assets/Secenek.png";
+import tercihbot from "../assets/Tercihbot.png";
 
 const mywork_data = [
   {
@@ -26,6 +27,15 @@ const mywork_data = [
     w_github: "https://github.com/daniyalnamdar",
     w_demo: "https://app.secenek.club/login",
     w_img: secenek,
+  },
+  {
+    w_no: 3,
+    w_name: "Web design",
+    w_desc:
+      "I developed the complete backend for TercihBot, an online platform that helps students find and compare the best education options tailored to their preferences. Using PHP and Symfony 7, I designed and implemented a robust, maintainable backend architecture with MySQL as the database. My work focused on building efficient APIs, handling complex filtering and scoring logic, and ensuring smooth, secure interactions for thousands of users exploring schools and programs that best match their goals.",
+    w_github: "https://github.com/daniyalnamdar",
+    w_demo: "https://tercihbot.com/",
+    w_img: tercihbot,
   },
   // {
   //   w_no: 3,
