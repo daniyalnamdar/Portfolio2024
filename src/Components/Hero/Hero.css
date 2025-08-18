@@ -1,100 +1,121 @@
 .hero {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  gap: 35px;
+  justify-content: space-between;
+  padding: 80px 10%;
+  gap: 40px;
+  margin-top: 100px;
+  margin-bottom: 160px;
 }
-/* .hero img {
-  max-width: fit-content;
-  max-height: fit-content;
-  margin-top: 5 0px;
-} */
 
-.hero img {
-  width: 350px; /* Adjust this size as needed */
-  height: fit-content;
-  /* border-radius: 50%; Optional, makes the image circular */
-  margin-top: 5 0px;
+.hero-left {
+  flex: 1;
 }
-.hero h1 {
-  text-align: center;
-  width: 80%;
-  font-size: 70px;
-  font-weight: 600;
+
+.hero-left h1 {
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
-.hero h1 span {
+
+.hero-left h1 span {
   background: linear-gradient(270deg, #df8908 10%, #b415ff 100%);
-  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.hero p {
-  width: 50%;
-  text-align: center;
-  font-size: 24px;
-  line-height: 40px;
+
+.hero-left h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #ccc;
 }
+
+.hero-left p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  color: #ddd;
+}
+
 .hero-action {
   display: flex;
   align-items: center;
-  gap: 25px;
-  font-size: 24px;
-  font-weight: 500;
-  margin-bottom: 50px;
+  gap: 20px;
 }
-.hero-connect {
-  padding: 25px;
-  border-radius: 50px;
-  background: linear-gradient(264deg, #df8908 -5.09%, #b415ff 106.28%);
-  cursor: pointer;
-}
+
+.hero-connect,
 .hero-resume {
-  padding: 25px 75px;
+  padding: 15px 35px;
   border-radius: 50px;
-  border: 2px solid #fff;
+  font-size: 18px;
+  font-weight: 500;
   cursor: pointer;
+  transition: 0.3s;
 }
-.hero-resume a {
-  list-style: none;
-  text-decoration: none;
-  color: white;
-  outline: none;
-  border: none;
+
+.hero-connect {
+  background: linear-gradient(264deg, #444, #111);
 }
+
 .hero-connect:hover {
-  border: 2px solid white;
+  opacity: 0.9;
 }
+
+.hero-resume {
+  border: 2px solid #fff;
+}
+
 .hero-resume:hover {
   border-color: #b415ff;
 }
-@media (max-width: 768px) {
-  .hero img {
-    margin-top: 120px;
-    width: 260px;
+
+.hero-resume a {
+  text-decoration: none;
+  color: white;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-img-wrapper {
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  overflow: hidden;
+  /* background: linear-gradient(264deg, #6a11cb, #2575fc); */
+  padding: 5px;
+}
+
+.hero-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: brightness(0.95) contrast(1.05);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 60px 5%;
   }
-  .hero h1 {
-    margin-top: 50px;
-    width: 90%;
-    font-size: 50px;
+  .hero-left h1 {
+    font-size: 42px;
   }
-  .hero p {
-    width: 60%;
+  .hero-left h2 {
+    font-size: 22px;
+  }
+  .hero-left p {
     font-size: 18px;
-    line-height: 32px;
-    margin: 10px 0px;
   }
-  .hero-action {
-    gap: 16px;
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 50px;
-  }
-  .hero-connect {
-    padding: 20px 30px;
-    border-radius: 40px;
-  }
-  .hero-resume {
-    padding: 20px 50px;
-    border-radius: 40px;
+  .hero-img-wrapper {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 30px;
   }
 }

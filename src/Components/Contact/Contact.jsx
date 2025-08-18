@@ -39,17 +39,14 @@ function Contact() {
         <div className="contact-left">
           <h1>Let's Talk</h1>
           <p>
-            i am here to talk i am here to talk i am here to talk i am here to
-            talk i am here{" "}
+            I’d love to hear from you! Whether you want to discuss an idea,
+            collaborate on a project, or just connect, feel free to reach out
+            anytime.
           </p>
           <div className="contact-details">
             <div className="contact-detail">
               <img src={mail_icon} alt="" />
               <p>daniyal.namdar@gmail.com</p>
-            </div>
-            <div className="contact-detail">
-              <img src={call_icon} alt="" />
-              <p>+90 538815 7910</p>
             </div>
             <div className="contact-detail">
               <img src={location_icon} alt="" />
