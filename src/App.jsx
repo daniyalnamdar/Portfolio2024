@@ -10,10 +10,8 @@ import ReactGA from "react-ga4";
 
 function App() {
   useEffect(() => {
-    // ✅ Initialize Google Analytics
+    // Initialize Google Analytics
     ReactGA.initialize("G-FLC67HHHPJ");
-
-    // ✅ Send initial pageview
     ReactGA.send({ hitType: "pageview", page: window.location.pathname });
   }, []);
   return (
