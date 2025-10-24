@@ -15,6 +15,14 @@ function MyWork() {
 
   const closeModal = () => {
     setModalVisible(false);
+    setSelectedWork(null);
+  };
+
+  // ✅ handle click outside modal content
+  const handleOutsideClick = (e) => {
+    if (e.target.classList.contains("mywork-modal")) {
+      closeModal();
+    }
   };
 
   return (
@@ -23,23 +31,25 @@ function MyWork() {
         <h1>My Latest Work</h1>
         <img src={theme_pattern} alt="" />
       </div>
+
       <div className="mywork-container">
         {mywork_data.map((work, index) => (
           <img
             key={index}
             src={work.w_img}
-            alt=""
+            alt={work.w_name}
             onClick={() => openModal(work)}
           />
         ))}
       </div>
+
       <div className="mywork-showmore">
         <p>Show More</p>
         <img src={arrow_icone} alt="" />
       </div>
 
       {modalVisible && (
-        <div className="mywork-modal">
+        <div className="mywork-modal" onClick={handleOutsideClick}>
           <div className="mywork-modal-content">
             <span className="close" onClick={closeModal}>
               &times;

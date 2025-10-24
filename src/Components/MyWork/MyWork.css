@@ -58,6 +58,7 @@
 
 /* Modal CSS */
 .mywork-modal {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,6 +72,7 @@
 }
 
 .mywork-modal-content {
+  cursor: default;
   width: 800px;
   height: 600px;
   background-color: #12100b;
@@ -186,7 +188,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 30p;
+    gap: 30px;
     top: 220px;
     left: 160px;
     position: absolute;
