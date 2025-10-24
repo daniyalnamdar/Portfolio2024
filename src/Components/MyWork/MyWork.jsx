@@ -3,6 +3,7 @@ import "./MyWork.css";
 import theme_pattern from "../../assets/theme_pattern.svg";
 import mywork_data from "../../assets/mywork_data";
 import arrow_icone from "../../assets/arrow_icon.svg";
+import ReactGA from "react-ga4";
 
 function MyWork() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -11,6 +12,13 @@ function MyWork() {
   const openModal = (work) => {
     setSelectedWork(work);
     setModalVisible(true);
+
+    // Log when a project modal is opened
+    ReactGA.event({
+      category: "Portfolio",
+      action: "Opened Project Modal",
+      label: work.w_name,
+    });
   };
 
   const closeModal = () => {
@@ -18,11 +26,30 @@ function MyWork() {
     setSelectedWork(null);
   };
 
-  // ✅ handle click outside modal content
   const handleOutsideClick = (e) => {
     if (e.target.classList.contains("mywork-modal")) {
       closeModal();
     }
+  };
+
+  // Track GitHub clicks
+  const handleGithubClick = (work) => {
+    ReactGA.event({
+      category: "Portfolio",
+      action: "Clicked GitHub Button",
+      label: work.w_name,
+    });
+    window.open(work.w_github, "_blank");
+  };
+
+  // Track Demo clicks
+  const handleDemoClick = (work) => {
+    ReactGA.event({
+      category: "Portfolio",
+      action: "Clicked Demo Button",
+      label: work.w_name,
+    });
+    window.open(work.w_demo, "_blank");
   };
 
   return (
@@ -59,10 +86,10 @@ function MyWork() {
                 <h3>{selectedWork.w_name}</h3>
                 <p>{selectedWork.w_desc}</p>
                 <div className="mywork-modal-buttons">
-                  <button onClick={() => window.open(selectedWork.w_github)}>
+                  <button onClick={() => handleGithubClick(selectedWork)}>
                     GitHub
                   </button>
-                  <button onClick={() => window.open(selectedWork.w_demo)}>
+                  <button onClick={() => handleDemoClick(selectedWork)}>
                     Demo
                   </button>
                 </div>
