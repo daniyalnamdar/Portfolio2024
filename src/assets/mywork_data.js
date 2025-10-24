@@ -18,7 +18,8 @@ const mywork_data = [
     w_no: 2,
     w_name: "Language Learning Platform – BAU MyMentora",
     w_desc:
-      "BAU MyMentora is a university-level language learning platform designed to help students prepare for exams through courses, assignments, and live messaging. I built the backend with Symfony 7 and MySQL, using Docker for containerization and Oracle Cloud for hosting and file storage. The system supports Admin, Teacher, and Student roles with tailored access controls and real-time communication via Mercure and Symfony Messenger. I also wrote comprehensive unit, integration, functional, and smoke tests to ensure reliability and smooth production releases."    w_github: "https://github.com/daniyalnamdar",
+      "BAU MyMentora is a university-level language learning platform designed to help students prepare for exams through courses, assignments, and live messaging. I built the backend with Symfony 7 and MySQL, using Docker for containerization and Oracle Cloud for hosting and file storage. The system supports Admin, Teacher, and Student roles with tailored access controls and real-time communication via Mercure and Symfony Messenger. I also wrote comprehensive unit, integration, functional, and smoke tests to ensure reliability and smooth production releases.",
+    w_github: "https://github.com/daniyalnamdar",
     w_demo: "https://baumentora.com/login",
     w_img: baumentora,
   },
