@@ -1,48 +1,45 @@
-import React from "react";
-import "./Footer.css";
-import footer_logo from "../../assets/footer_logo.svg";
-import user_icon from "../../assets/user_icon.svg";
 import { BsLinkedin } from "react-icons/bs";
 import { FaGithub } from "react-icons/fa";
 import { FiDribbble } from "react-icons/fi";
 
 function Footer() {
   return (
-    <div className="footer">
-      {/* <div className="footer-top">
-        <div className="footer-top-left">
-          <img src={footer_logo} alt="" />
-          <p>
-            {" "}
-            I am so cool yaa I am so cool yaaI am so cool yaaI am so cool yaa{" "}
-          </p>
-        </div>
-        <div className="footer-top-right">
-          <div className="footer-email-input">
-            <img src={user_icon} alt="" />
-            <input type="email" placeholder="Enter your email" />
-          </div>
-          <div className="footer-subscribe">Subscribe</div>
-        </div>
-      </div> */}
-      <hr />
-      <div className="footer-bottom">
-        <p className="footer-bottom-left">
+    <footer className="border-t border-white/[0.07] bg-navy-950/90">
+      <div className="dn-container flex flex-col items-center justify-between gap-10 py-14 md:flex-row">
+        <p className="max-w-md text-center font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-slate-500 md:text-left">
           &copy; DANIYAL Website, All rights reserved.{" "}
         </p>
-        <div className="footer-bottom-right">
-          <a href="https://www.linkedin.com/in/daniyal-namdar/" target="_blank">
-            <BsLinkedin size={40} color="white" />
+        <div className="flex items-center gap-8 md:gap-10">
+          <a
+            href="https://www.linkedin.com/in/daniyal-namdar/"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-xl border border-transparent p-2 text-slate-400 transition-all hover:border-white/10 hover:text-accent"
+            aria-label="LinkedIn"
+          >
+            <BsLinkedin size={34} />
           </a>
-          <a href="https://github.com/daniyalnamdar" target="_blank">
-            <FaGithub size={40} color="white" />
+          <a
+            href="https://github.com/daniyalnamdar"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-xl border border-transparent p-2 text-slate-400 transition-all hover:border-white/10 hover:text-accent"
+            aria-label="GitHub"
+          >
+            <FaGithub size={34} />
           </a>
-          <a href="http://www.daniyalnamdar.com/" target="_blank">
-            <FiDribbble size={40} color="white" />
+          <a
+            href="http://www.daniyalnamdar.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-xl border border-transparent p-2 text-slate-400 transition-all hover:border-white/10 hover:text-accent"
+            aria-label="Portfolio site"
+          >
+            <FiDribbble size={34} />
           </a>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 

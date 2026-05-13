@@ -1,8 +1,7 @@
-import newProject from "../assets/newProject.png";
-import mentora from "../assets/mentora.png";
-import secenek from "../assets/Secenek.png";
-import tercihbot from "../assets/Tercihbot.png";
-import baumentora from "../assets/BauMentora.png";
+import newProject from "./newProject.png";
+import mentora from "./mentora.png";
+import tercihbot from "./Tercihbot.png";
+import baumentora from "./BauMentora.png";
 
 const mywork_data = [
   {
@@ -32,24 +31,28 @@ const mywork_data = [
     w_demo: "https://tercihbot.com/",
     w_img: tercihbot,
   },
-  // {
-  //   w_no: 4,
-  //   w_name: "Secenek",
-  //   w_desc:
-  //     "Our platform allows students to register via phone or web, offering different packages that can be purchased either by the students themselves or by schools. We also integrated services for in-app purchases across Android and iOS, leveraging Apple Connect and Google APIs to manage payments. The system provides a student panel, an exam center panel, and an admin panel, enabling full control over exam centers and facilitating smooth exam processes.",
-  //   w_github: "https://github.com/daniyalnamdar",
-  //   w_demo: "https://app.secenek.club/login",
-  //   w_img: secenek,
-  // },
-  // {
   {
     w_no: 6,
     w_name: "Web design",
-    w_desc: "example of work you can find the link to the demo and github.",
+    w_desc:
+      "example of work you can find the link to the demo and github.",
     w_github: "https://github.com/daniyalnamdar",
     w_demo: "empty",
     w_img: newProject,
   },
 ];
+
+/**
+ * Commented reference — content preserved as in original file:
+ * {
+ *   w_no: 4,
+ *   w_name: "Secenek",
+ *   w_desc:
+ *     "Our platform allows students to register via phone or web, offering different packages that can be purchased either by the students themselves or by schools. We also integrated services for in-app purchases across Android and iOS, leveraging Apple Connect and Google APIs to manage payments. The system provides a student panel, an exam center panel, and an admin panel, enabling full control over exam centers and facilitating smooth exam processes.",
+ *   w_github: "https://github.com/daniyalnamdar",
+ *   w_demo: "https://app.secenek.club/login",
+ *   w_img: secenek,
+ * },
+ */
 
 export default mywork_data;
