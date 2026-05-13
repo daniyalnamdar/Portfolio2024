@@ -1,142 +1,222 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Wordmark from "../Wordmark";
+import { NAV_OFFSET } from "../../constants/navigation";
 
 const LINKS = [
-  { id: "home", label: "Home", href: "#home", offset: 72 },
-  { id: "about", label: "About", href: "#about", offset: 72 },
-  { id: "services", label: "Skills", href: "#services", offset: 72 },
-  { id: "work", label: "Portfolio", href: "#work", offset: 72 },
-  { id: "contact", label: "Contact", href: "#contact", offset: 72 },
+  { id: "home", label: "Home", href: "#home" },
+  { id: "about", label: "About", href: "#about" },
+  { id: "services", label: "Skills", href: "#services" },
+  { id: "work", label: "Portfolio", href: "#work" },
+  { id: "contact", label: "Contact", href: "#contact" },
 ];
 
 function Navbar() {
   const [active, setActive] = useState("home");
-  const [open, setOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const drawerRef = useRef(null);
 
-  const close = () => setOpen(false);
+  const closeDrawer = () => setDrawerOpen(false);
 
   useEffect(() => {
-    if (!open) return undefined;
-    const onKey = (e) => {
-      if (e.key === "Escape") close();
-    };
+    const els = LINKS.map(({ href }) => document.querySelector(href)).filter(Boolean);
+    if (!els.length) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting && e.target.id)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]?.target?.id) {
+          setActive(visible[0].target.id);
+        }
+      },
+      {
+        rootMargin: `-${Math.round(NAV_OFFSET + 8)}px 0px -45% 0px`,
+        threshold: [0, 0.08, 0.15, 0.25, 0.5, 1],
+      },
+    );
+
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!drawerOpen) return undefined;
     document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
-      document.removeEventListener("keydown", onKey);
     };
-  }, [open]);
+  }, [drawerOpen]);
+
+  useEffect(() => {
+    if (!drawerOpen) return undefined;
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") closeDrawer();
+    };
+
+    const firstFocusable = drawerRef.current?.querySelector(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    );
+
+    document.addEventListener("keydown", onKeyDown);
+    firstFocusable?.focus?.({ preventScroll: true });
+
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [drawerOpen]);
+
+  useEffect(() => {
+    if (!drawerOpen) return undefined;
+
+    const trapHandler = (e) => {
+      if (e.key !== "Tab" || !drawerRef.current) return;
+
+      const items = drawerRef.current.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+
+      if (!items.length) return;
+
+      const first = items[0];
+      const last = items[items.length - 1];
+
+      if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      } else if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    };
+
+    document.addEventListener("keydown", trapHandler);
+    return () => document.removeEventListener("keydown", trapHandler);
+  }, [drawerOpen]);
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-void/90 backdrop-blur-2xl">
-        <div className="dn-container flex items-center justify-between gap-6 py-4 md:py-5">
-          <Wordmark
-            onNavigate={() => {
-              setActive("home");
-              close();
-            }}
-          />
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-40">
+        <div className="pointer-events-none relative mx-auto max-w-[1440px] px-4 pt-4 sm:px-6 lg:px-10 lg:pt-6">
+          <div className="pointer-events-auto flex items-center justify-between gap-3">
+            <Wordmark
+              onNavigate={() => {
+                setActive("home");
+                closeDrawer();
+              }}
+            />
 
-          <nav className="dn-desktop-only" aria-label="Primary">
-            <ul className="flex flex-wrap items-center gap-8 lg:gap-10">
-              {LINKS.map(({ id, label, href, offset }) => (
-                <li key={id}>
+            <nav
+              className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-[calc(50%-0.25rem)] lg:block"
+              aria-label="Primary"
+            >
+              <div className="flex items-center gap-1 rounded-xl border border-white/[0.07] bg-panel/90 px-2 py-1.5 shadow-dock backdrop-blur-xl">
+                {LINKS.map(({ id, label, href }) => (
                   <AnchorLink
-                    offset={offset}
+                    key={id}
+                    offset={NAV_OFFSET}
                     href={href}
-                    className={`group relative font-mono text-[11px] uppercase tracking-[0.22em] transition-colors ${
-                      active === id ? "text-accent" : "text-slate-400 hover:text-slate-200"
-                    }`}
+                    className={`dock-link ${active === id ? "dock-link-active" : ""}`}
                     onClick={() => setActive(id)}
                   >
                     {label}
-                    <span
-                      className={`absolute -bottom-1 left-0 h-[2px] bg-accent transition-all duration-300 ease-out ${
-                        active === id ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-40"
-                      }`}
-                    />
                   </AnchorLink>
-                </li>
-              ))}
-            </ul>
-            <AnchorLink
-              offset={72}
-              href="#contact"
-              className="rounded-xl border border-accent/50 bg-accent/[0.12] px-5 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-accent transition-all duration-300 hover:bg-accent hover:text-void hover:shadow-[0_12px_40px_-16px_rgba(34,211,238,0.5)]"
-              onClick={() => setActive("contact")}
-            >
-              Connect With Me
-            </AnchorLink>
-          </nav>
+                ))}
+              </div>
+            </nav>
 
-          <button
-            type="button"
-            className="dn-mobile-only flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-white/[0.03]"
-            aria-expanded={open}
-            aria-controls="dn-mobile-drawer"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span
-              className={`block h-px w-5 bg-slate-200 transition-transform ${open ? "translate-y-[5px] rotate-45" : ""}`}
-            />
-            <span className={`block h-px w-5 bg-slate-200 transition-opacity ${open ? "opacity-0" : ""}`} />
-            <span
-              className={`block h-px w-5 bg-slate-200 transition-transform ${open ? "-translate-y-[5px] -rotate-45" : ""}`}
-            />
-            <span className="sr-only">Toggle menu</span>
-          </button>
+            <div className="hidden shrink-0 items-center gap-3 lg:flex">
+              <AnchorLink
+                offset={NAV_OFFSET}
+                href="#contact"
+                className="rounded-full border border-accent/45 bg-accent/10 px-5 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-accent transition hover:bg-accent hover:text-void hover:shadow-[0_12px_40px_-12px_rgba(46,230,168,0.45)]"
+                onClick={() => setActive("contact")}
+              >
+                Connect With Me
+              </AnchorLink>
+            </div>
+
+            <button
+              type="button"
+              className="inline-flex h-11 items-center justify-center rounded-lg border border-white/[0.08] bg-panel/90 px-4 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-300 backdrop-blur-xl transition hover:border-accent/40 hover:text-accent lg:hidden"
+              aria-expanded={drawerOpen}
+              aria-controls="mobile-drawer"
+              onClick={() => setDrawerOpen(true)}
+            >
+              Menu
+            </button>
+          </div>
         </div>
       </header>
 
       <div
-        id="dn-mobile-drawer"
-        className={`dn-mobile-only fixed inset-0 z-[60] ${open ? "pointer-events-auto" : "pointer-events-none"}`}
-        aria-hidden={!open}
+        id="mobile-drawer"
+        ref={drawerRef}
+        className={`fixed inset-0 z-[80] lg:hidden ${drawerOpen ? "" : "pointer-events-none"}`}
+        aria-hidden={!drawerOpen}
       >
         <button
           type="button"
-          className={`absolute inset-0 bg-void/90 backdrop-blur-md transition-opacity duration-300 ${
-            open ? "opacity-100" : "opacity-0"
+          tabIndex={drawerOpen ? 0 : -1}
+          className={`absolute inset-0 bg-black/75 backdrop-blur-sm transition-opacity duration-300 ${
+            drawerOpen ? "opacity-100" : "opacity-0"
           }`}
-          onClick={close}
-          tabIndex={open ? 0 : -1}
           aria-label="Close menu"
+          onClick={closeDrawer}
         />
-        <nav
-          className={`absolute right-0 top-0 flex h-full w-[min(100%,22rem)] flex-col border-l border-white/[0.08] bg-navy-900 px-8 pb-10 pt-24 shadow-lift transition-transform duration-300 ease-out ${
-            open ? "translate-x-0" : "translate-x-full"
+
+        <aside
+          className={`absolute right-0 top-0 flex h-full w-[min(22rem,92vw)] flex-col border-l border-white/[0.06] bg-void shadow-[-24px_0_80px_rgba(0,0,0,0.7)] transition-transform duration-300 ease-out ${
+            drawerOpen ? "translate-x-0" : "translate-x-full"
           }`}
-          aria-label="Mobile"
         >
-          {LINKS.map(({ id, label, href, offset }) => (
+          <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-4">
+            <span className="font-display text-xs font-semibold uppercase tracking-[0.26em] text-slate-500">
+              Navigate
+            </span>
+            <button
+              type="button"
+              tabIndex={drawerOpen ? 0 : -1}
+              className="rounded-lg border border-white/[0.08] bg-ink px-3 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-slate-400 transition hover:border-accent/40 hover:text-accent"
+              onClick={closeDrawer}
+            >
+              Close
+            </button>
+          </div>
+
+          <nav className="flex flex-1 flex-col gap-1 px-3 py-5" aria-label="Mobile primary">
+            {LINKS.map(({ id, label, href }) => (
+              <AnchorLink
+                key={id}
+                offset={NAV_OFFSET}
+                href={href}
+                className={`rounded-lg px-4 py-3 font-display text-lg font-semibold transition hover:bg-white/[0.05] hover:text-accent ${
+                  active === id ? "text-accent" : "text-slate-300"
+                }`}
+                onClick={() => {
+                  setActive(id);
+                  closeDrawer();
+                }}
+              >
+                {label}
+              </AnchorLink>
+            ))}
+          </nav>
+
+          <div className="border-t border-white/[0.06] px-5 py-5">
             <AnchorLink
-              key={id}
-              offset={offset}
-              href={href}
-              className="border-b border-white/[0.06] py-5 font-mono text-xs uppercase tracking-[0.22em] text-slate-300"
+              offset={NAV_OFFSET}
+              href="#contact"
+              className="block w-full rounded-lg border border-accent/40 bg-accent/10 py-3.5 text-center font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-accent"
               onClick={() => {
-                setActive(id);
-                close();
+                setActive("contact");
+                closeDrawer();
               }}
             >
-              {label}
+              Connect With Me
             </AnchorLink>
-          ))}
-          <AnchorLink
-            offset={72}
-            href="#contact"
-            className="mt-8 rounded-sm border border-accent bg-accent/15 py-4 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-accent"
-            onClick={() => {
-              setActive("contact");
-              close();
-            }}
-          >
-            Connect With Me
-          </AnchorLink>
-        </nav>
+          </div>
+        </aside>
       </div>
     </>
   );

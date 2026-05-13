@@ -9,6 +9,10 @@ function excerpt(text, max = 220) {
   return `${text.slice(0, max).trim()}…`;
 }
 
+function cardSummary(text, max = 132) {
+  return excerpt(text, max);
+}
+
 function MyWork() {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedWork, setSelectedWork] = useState(null);
@@ -59,78 +63,98 @@ function MyWork() {
   const demoOk = (work) => work.w_demo && work.w_demo !== "empty";
 
   return (
-    <section id="work" className="border-b border-white/[0.06] bg-navy-950/25">
-      <div className="dn-container py-20 md:py-28 lg:py-32">
+    <section id="work" className="border-b border-white/[0.06] bg-panel/25">
+      <div className="shell py-20 md:py-28 lg:py-32">
         <Reveal>
-          <header className="max-w-3xl">
-            <h1 className="dn-section-title">My Latest Work</h1>
-            <div className="dn-accent-bar" />
+          <header className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-slate-600">
+                04 — shipped
+              </p>
+              <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white md:text-5xl">
+                My Latest Work
+              </h2>
+            </div>
+            <div className="h-px w-full max-w-md bg-gradient-to-r from-accent/80 via-signal to-transparent lg:mb-3" />
           </header>
         </Reveal>
 
-        <div className="mt-14 grid gap-7 sm:grid-cols-2 lg:mt-16 lg:gap-8">
+        <ul className="mt-14 grid list-none gap-6 sm:grid-cols-2 lg:mt-16 lg:gap-8">
           {mywork_data.map((work, index) => (
-            <Reveal key={work.w_no} delay={index * 80}>
-              <article className="dn-card dn-card-hover group overflow-hidden p-0">
-                <div className="relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-gradient-to-br from-navy-950 via-navy-900/90 to-void p-3 sm:p-5">
+            <Reveal key={work.w_no} delay={index * 70} as="li" className="min-w-0">
+              <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-panel/70 shadow-lift ring-1 ring-white/[0.04] transition hover:border-accent/25 hover:shadow-[0_28px_80px_-48px_rgba(46,230,168,0.2)]">
+                <div className="relative aspect-[16/10] bg-gradient-to-br from-void via-ink to-panel">
                   <img
                     src={work.w_img}
-                    alt={work.w_name}
-                    className="max-h-full max-w-full object-contain object-center transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    alt=""
+                    className="absolute inset-0 m-auto max-h-[88%] max-w-[92%] object-contain object-center transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                     loading="lazy"
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void via-void/35 to-transparent opacity-85" />
-                  <div className="pointer-events-none absolute inset-0 bg-void/0 transition-colors duration-300 group-hover:bg-void/45 md:group-hover:bg-void/55" />
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(7,10,18,0.55)_0%,transparent_42%)]"
+                    aria-hidden
+                  />
 
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] p-6 md:p-8">
-                    <h3 className="text-balance font-mono text-base font-semibold leading-snug text-white md:text-lg">
+                  <button
+                    type="button"
+                    className="absolute inset-0 z-[1] cursor-pointer border-0 bg-transparent p-0 text-left outline-none"
+                    onClick={() => openModal(work)}
+                    aria-label={`Open project details: ${work.w_name}`}
+                  />
+                </div>
+
+                <div className="flex flex-1 flex-col gap-4 border-t border-white/[0.06] p-5 md:p-6">
+                  <div>
+                    <p className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-accent/90">
+                      #{String(work.w_no).padStart(2, "0")}
+                    </p>
+                    <h3 className="mt-2 text-balance font-mono text-base font-semibold leading-snug text-white md:text-lg">
                       {work.w_name}
                     </h3>
                   </div>
 
-                  <div className="pointer-events-none absolute inset-0 z-[3] hidden flex-col justify-end bg-gradient-to-t from-void via-void/97 to-void/40 p-8 opacity-0 transition-opacity duration-300 md:flex md:group-hover:pointer-events-auto md:group-hover:opacity-100">
-                    <p className="max-h-[44%] overflow-y-auto text-sm leading-relaxed text-slate-100">
-                      {excerpt(work.w_desc)}
-                    </p>
-                    <div className="mt-5 flex flex-wrap gap-3">
+                  <p className="line-clamp-3 text-sm leading-relaxed text-slate-400">
+                    {cardSummary(work.w_desc)}
+                  </p>
+
+                  <div className="mt-auto flex flex-wrap items-center gap-2">
+                    <a
+                      href={work.w_github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center rounded-lg border border-white/18 bg-white/[0.04] px-4 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-200 transition hover:border-accent/45 hover:text-accent"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      GitHub
+                    </a>
+                    {demoOk(work) ? (
                       <a
-                        href={work.w_github}
+                        href={work.w_demo}
                         target="_blank"
                         rel="noreferrer"
-                        className="rounded-lg border border-white/25 bg-white/[0.06] px-4 py-2.5 font-mono text-[10px] font-medium uppercase tracking-[0.15em] text-white backdrop-blur-sm transition-colors hover:border-accent hover:text-accent"
+                        className="inline-flex items-center justify-center rounded-lg border border-white/18 bg-white/[0.04] px-4 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-200 transition hover:border-accent/45 hover:text-accent"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        GitHub
+                        Demo
                       </a>
-                      {demoOk(work) ? (
-                        <a
-                          href={work.w_demo}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="rounded-lg border border-white/25 bg-white/[0.06] px-4 py-2.5 font-mono text-[10px] font-medium uppercase tracking-[0.15em] text-white backdrop-blur-sm transition-colors hover:border-accent hover:text-accent"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          Demo
-                        </a>
-                      ) : (
-                        <span className="rounded-lg border border-white/10 px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.15em] text-slate-600">
-                          Demo
-                        </span>
-                      )}
-                    </div>
+                    ) : (
+                      <span className="inline-flex cursor-not-allowed items-center justify-center rounded-lg border border-white/[0.06] px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-600">
+                        Demo
+                      </span>
+                    )}
+                    <button
+                      type="button"
+                      className="inline-flex items-center justify-center rounded-lg border border-accent/35 bg-accent/10 px-4 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-accent transition hover:bg-accent/20"
+                      onClick={() => openModal(work)}
+                    >
+                      Details
+                    </button>
                   </div>
-
-                  <button
-                    type="button"
-                    className="absolute inset-0 z-[1] md:z-[2] md:group-hover:z-[1] md:group-hover:pointer-events-none"
-                    onClick={() => openModal(work)}
-                    aria-label={`Open project: ${work.w_name}`}
-                  />
                 </div>
               </article>
             </Reveal>
           ))}
-        </div>
+        </ul>
 
         <Reveal delay={120}>
           <div className="mt-14 flex items-center justify-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">
@@ -150,7 +174,7 @@ function MyWork() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="project-modal-title"
-            className="max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-2xl border border-white/12 bg-navy-900 p-8 shadow-lift md:p-10"
+            className="max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-2xl border border-white/12 bg-panel p-8 shadow-lift md:p-10"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4">
@@ -168,9 +192,7 @@ function MyWork() {
                 Close
               </button>
             </div>
-            <p className="mt-8 text-sm leading-relaxed text-slate-400">
-              {selectedWork.w_desc}
-            </p>
+            <p className="mt-8 text-sm leading-relaxed text-slate-400">{selectedWork.w_desc}</p>
             <div className="mt-10 flex flex-wrap gap-3">
               <button
                 type="button"

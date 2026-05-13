@@ -1,54 +1,26 @@
 /* eslint-disable react/prop-types -- layout primitive */
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { NAV_OFFSET } from "../constants/navigation";
 
-/**
- * Minimal SVG frame + monogram — replaces raster logo.
- */
 export default function Wordmark({ onNavigate }) {
   return (
     <AnchorLink
-      offset={72}
+      offset={NAV_OFFSET}
       href="#home"
-      className="group flex items-center gap-3 outline-none"
+      className="group flex items-center gap-2.5 outline-none sm:gap-3"
       onClick={onNavigate}
       aria-label="Daniyal Namdar — home"
     >
-      <svg
-        width="44"
-        height="44"
-        viewBox="0 0 44 44"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="shrink-0 text-accent transition-[color,transform] duration-300 ease-out group-hover:scale-[1.02] group-hover:text-accent-bright"
-        aria-hidden
-      >
-        <rect
-          x="1"
-          y="1"
-          width="42"
-          height="42"
-          rx="3"
-          stroke="currentColor"
-          strokeWidth="1.25"
-          className="opacity-80 group-hover:opacity-100"
-        />
-        <text
-          x="22"
-          y="27"
-          textAnchor="middle"
-          fill="currentColor"
-          className="font-mono text-[13px] font-medium tracking-tight"
-          style={{ fontFamily: "JetBrains Mono, ui-monospace, monospace" }}
-        >
-          DN
-        </text>
-      </svg>
-      <div className="flex flex-col leading-none">
-        <span className="font-mono text-[10px] uppercase tracking-[0.38em] text-slate-500 transition-colors group-hover:text-slate-400">
-          Daniyal
-        </span>
-        <span className="mt-1 font-mono text-base tracking-[0.06em] text-slate-100 transition-colors group-hover:text-white">
+      <div className="relative grid h-11 w-11 place-items-center rounded-lg border border-accent/35 bg-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-transform duration-300 group-hover:-rotate-6 group-hover:border-accent/60 sm:h-12 sm:w-12">
+        <span className="font-mono text-sm font-bold tracking-tighter text-accent sm:text-base">DN</span>
+        <span className="pointer-events-none absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-accent shadow-[0_0_12px_#2ee6a8]" aria-hidden />
+      </div>
+      <div className="hidden leading-tight sm:block">
+        <span className="font-display text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">
           Namdar
+        </span>
+        <span className="mt-0.5 block font-mono text-[11px] text-slate-400">
+          backend<span className="text-accent">/</span>systems
         </span>
       </div>
     </AnchorLink>

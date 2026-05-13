@@ -4,39 +4,49 @@ export default {
   theme: {
     extend: {
       colors: {
-        void: "#080d18",
-        navy: {
-          950: "#0a1120",
-          900: "#0f1729",
-          850: "#141d33",
-          800: "#1a2744",
-        },
+        void: "#070a12",
+        panel: "#0d121f",
+        ink: "#121826",
         accent: {
-          DEFAULT: "#22d3ee",
-          bright: "#67e8f9",
-          glow: "rgba(34, 211, 238, 0.45)",
-          dim: "rgba(34, 211, 238, 0.14)",
+          DEFAULT: "#2ee6a8",
+          mute: "#1fa876",
+          bright: "#6effca",
+          glow: "rgba(46, 230, 168, 0.35)",
+          dim: "rgba(46, 230, 168, 0.12)",
         },
-        spark: {
-          purple: "#c084fc",
-          dim: "rgba(192, 132, 252, 0.14)",
+        signal: {
+          DEFAULT: "#6366f1",
+          dim: "rgba(99, 102, 241, 0.2)",
         },
-        warmth: {
-          DEFAULT: "#fbbf24",
-          dim: "rgba(251, 191, 36, 0.12)",
+        amber: {
+          wire: "#f59e0b",
         },
       },
       fontFamily: {
         sans: ['"DM Sans"', "system-ui", "sans-serif"],
         mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
+        display: ['"Syne"', "system-ui", "sans-serif"],
       },
       boxShadow: {
-        lift: "0 24px 80px -20px rgba(0, 0, 0, 0.55)",
-        ring: "0 0 0 1px rgba(148, 163, 184, 0.1)",
-        glow: "0 0 48px -8px rgba(34, 211, 238, 0.35)",
+        lift: "0 28px 90px -36px rgba(0, 0, 0, 0.65)",
+        dock: "0 18px 60px -24px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255,255,255,0.06)",
       },
       transitionTimingFunction: {
         out: "cubic-bezier(0.22, 1, 0.36, 1)",
+      },
+      keyframes: {
+        "preloader-orbit": {
+          to: { transform: "rotate(360deg)" },
+        },
+        "preloader-bar": {
+          "0%": { transform: "translateX(-120%)", opacity: "0.5" },
+          "50%": { opacity: "1" },
+          "100%": { transform: "translateX(320%)", opacity: "0.5" },
+        },
+      },
+      animation: {
+        "preloader-orbit": "preloader-orbit 2.4s linear infinite",
+        "preloader-bar": "preloader-bar 1.1s ease-in-out infinite",
       },
     },
   },

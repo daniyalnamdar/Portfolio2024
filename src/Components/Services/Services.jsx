@@ -35,11 +35,18 @@ function Services() {
 
   return (
     <section id="services" className="border-b border-white/[0.06]">
-      <div className="dn-container py-20 md:py-28 lg:py-32">
+      <div className="shell py-20 md:py-28 lg:py-32">
         <Reveal>
-          <header className="max-w-3xl">
-            <h1 className="dn-section-title">My Skills</h1>
-            <div className="dn-accent-bar" />
+          <header className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-slate-600">
+                03 — stack
+              </p>
+              <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white md:text-5xl">
+                My Skills
+              </h2>
+            </div>
+            <div className="h-px w-full max-w-md bg-gradient-to-r from-signal via-accent/70 to-transparent lg:mb-3" />
           </header>
         </Reveal>
 
@@ -49,12 +56,12 @@ function Services() {
               <button
                 type="button"
                 onClick={() => openModal(service)}
-                className="dn-card dn-card-hover group flex h-full w-full flex-col p-8 text-left md:p-9"
+                className="panel group flex h-full w-full flex-col rounded-2xl p-8 text-left ring-1 ring-white/[0.05] transition hover:border-accent/25 hover:shadow-[0_28px_80px_-48px_rgba(46,230,168,0.35)] md:p-9"
               >
                 <span className="font-mono text-xs font-medium text-accent">{service.s_no}</span>
-                <h2 className="mt-4 font-mono text-lg font-semibold tracking-tight text-white md:text-xl">
+                <h3 className="mt-4 font-mono text-lg font-semibold tracking-tight text-white md:text-xl">
                   {service.s_name}
-                </h2>
+                </h3>
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-400">
                   {truncateString(service.s_desc, 75)}
                 </p>
@@ -78,18 +85,18 @@ function Services() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="skill-modal-title"
-            className="max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-white/12 bg-navy-900 p-8 shadow-lift md:p-10"
+            className="max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-white/12 bg-panel p-8 shadow-lift md:p-10"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="font-mono text-xs font-medium text-accent">{selectedService.s_no}</p>
-                <h2
+                <h3
                   id="skill-modal-title"
                   className="mt-2 font-mono text-xl font-semibold text-white"
                 >
                   {selectedService.s_name}
-                </h2>
+                </h3>
               </div>
               <button
                 type="button"
@@ -99,9 +106,7 @@ function Services() {
                 Close
               </button>
             </div>
-            <p className="mt-8 text-sm leading-relaxed text-slate-400">
-              {selectedService.s_desc}
-            </p>
+            <p className="mt-8 text-sm leading-relaxed text-slate-400">{selectedService.s_desc}</p>
           </div>
         </div>
       ) : null}

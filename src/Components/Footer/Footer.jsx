@@ -4,8 +4,8 @@ import { FiDribbble } from "react-icons/fi";
 
 function Footer() {
   return (
-    <footer className="border-t border-white/[0.07] bg-navy-950/90">
-      <div className="dn-container flex flex-col items-center justify-between gap-10 py-14 md:flex-row">
+    <footer className="border-t border-white/[0.07] bg-ink/95">
+      <div className="shell flex flex-col items-center justify-between gap-10 py-14 md:flex-row">
         <p className="max-w-md text-center font-mono text-[11px] uppercase leading-relaxed tracking-[0.18em] text-slate-500 md:text-left">
           &copy; DANIYAL Website, All rights reserved.{" "}
         </p>

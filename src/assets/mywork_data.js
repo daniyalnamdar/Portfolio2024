@@ -32,10 +32,9 @@ const mywork_data = [
     w_img: tercihbot,
   },
   {
-    w_no: 6,
+    w_no: 4,
     w_name: "Web design",
-    w_desc:
-      "example of work you can find the link to the demo and github.",
+    w_desc: "example of work you can find the link to the demo and github.",
     w_github: "https://github.com/daniyalnamdar",
     w_demo: "empty",
     w_img: newProject,
