@@ -6,52 +6,40 @@ import baumentora from "./BauMentora.png";
 const mywork_data = [
   {
     w_no: 1,
-    w_name: "Educational Platform – MyMentora",
+    w_name: "K-12 Language Learning LMS – MyMentora",
     w_desc:
-      "As part of my job, I utilized PHP Symfony framework and MySQL to develop the backend service for an educational platform. The platform includes an admin panel for adding programs, managing course content, creating classes, and registering students. It also features an LMS page for parents, students, and teachers to access their current program, participate in live conferences, and view exam assignments, among other functionalities.",
+      "Built the entire backend from scratch for a K-12 language learning platform that now serves over 10,000 users — 9,000 students and 1,000 teachers. Designed multi-role access control, a full content delivery pipeline, and async workflows using Symfony Messenger and Mercure that cut large file upload times from 3–4 minutes to under one minute. Secured media delivery by migrating from public S3 buckets to CloudFront signed URLs with time-based expiry. Also integrated Apple and Google in-app purchase APIs to enable subscription monetization across iOS and Android.",
     w_github: "https://github.com/daniyalnamdar",
     w_demo: "https://admin.mymentora.com/",
     w_img: mentora,
   },
   {
     w_no: 2,
-    w_name: "Language Learning Platform – BAU MyMentora",
+    w_name: "University LMS – BAU MyMentora",
     w_desc:
-      "BAU MyMentora is a university-level language learning platform designed to help students prepare for exams through courses, assignments, and live messaging. I built the backend with Symfony 7 and MySQL, using Docker for containerization and Oracle Cloud for hosting and file storage. The system supports Admin, Teacher, and Student roles with tailored access controls and real-time communication via Mercure and Symfony Messenger. I also wrote comprehensive unit, integration, functional, and smoke tests to ensure reliability and smooth production releases.",
+      "Architected the backend for a university-level language learning platform serving 2,400+ users across student, teacher, and admin roles. Built real-time student-teacher messaging and classroom notifications using Mercure — no page refreshes, no delays. Hardened media delivery on Oracle Cloud Object Storage by routing all file access through an Nginx proxy, eliminating direct endpoint exposure. Established a 100+ test suite spanning unit, integration, functional, and smoke layers so the team could ship to a live academic platform with confidence.",
     w_github: "https://github.com/daniyalnamdar",
     w_demo: "https://baumentora.com/login",
     w_img: baumentora,
   },
   {
     w_no: 3,
-    w_name: "School Finder Platform – TercihBot",
+    w_name: "Student Placement Platform – TercihBot",
     w_desc:
-      "I developed the complete backend for TercihBot, an online platform that helps students find and compare the best education options tailored to their preferences. Using PHP and Symfony 7, I designed and implemented a robust, maintainable backend architecture with MySQL as the database. My work focused on building efficient APIs, handling complex filtering and scoring logic, and ensuring smooth, secure interactions for thousands of users exploring schools and programs that best match their goals.",
+      "Developed the full backend for a placement platform that helps 1,100+ students generate ranked school preference lists from national LGS exam results. Integrated Google OAuth alongside email and SMS notification flows to reduce onboarding friction and re-engage users during high-traffic exam seasons. Tackled seasonal traffic spikes with targeted database indexing and a denormalized school summary table — keeping query performance stable exactly when it mattered most.",
     w_github: "https://github.com/daniyalnamdar",
     w_demo: "https://tercihbot.com/",
     w_img: tercihbot,
   },
   {
     w_no: 4,
-    w_name: "Web design",
-    w_desc: "example of work you can find the link to the demo and github.",
+    w_name: "Future Products",
+    w_desc:
+      "Application for Tracking your investments and assets (Coming Soon).",
     w_github: "https://github.com/daniyalnamdar",
     w_demo: "empty",
     w_img: newProject,
   },
 ];
-
-/**
- * Commented reference — content preserved as in original file:
- * {
- *   w_no: 4,
- *   w_name: "Secenek",
- *   w_desc:
- *     "Our platform allows students to register via phone or web, offering different packages that can be purchased either by the students themselves or by schools. We also integrated services for in-app purchases across Android and iOS, leveraging Apple Connect and Google APIs to manage payments. The system provides a student panel, an exam center panel, and an admin panel, enabling full control over exam centers and facilitating smooth exam processes.",
- *   w_github: "https://github.com/daniyalnamdar",
- *   w_demo: "https://app.secenek.club/login",
- *   w_img: secenek,
- * },
- */
 
 export default mywork_data;

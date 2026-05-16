@@ -19,26 +19,38 @@ function Navbar() {
   const closeDrawer = () => setDrawerOpen(false);
 
   useEffect(() => {
-    const els = LINKS.map(({ href }) => document.querySelector(href)).filter(Boolean);
-    if (!els.length) return undefined;
+    /** Viewport Y (px from top) past which a section counts as “current”. */
+    const line = NAV_OFFSET + 16;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting && e.target.id)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]?.target?.id) {
-          setActive(visible[0].target.id);
-        }
-      },
-      {
-        rootMargin: `-${Math.round(NAV_OFFSET + 8)}px 0px -45% 0px`,
-        threshold: [0, 0.08, 0.15, 0.25, 0.5, 1],
-      },
-    );
+    let ticking = false;
+    const computeActive = () => {
+      let current = LINKS[0].id;
+      for (const { id } of LINKS) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const { top } = el.getBoundingClientRect();
+        if (top <= line) current = id;
+      }
+      setActive((prev) => (prev === current ? prev : current));
+    };
 
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    const onScrollOrResize = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        computeActive();
+      });
+    };
+
+    computeActive();
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+
+    return () => {
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
   }, []);
 
   useEffect(() => {

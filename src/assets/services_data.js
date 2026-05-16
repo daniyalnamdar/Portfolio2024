@@ -1,39 +1,39 @@
 const Services_Data = [
   {
     s_no: "01",
-    s_name: "PHP and Symfony",
+    s_name: "PHP & Symfony",
     s_desc:
-      "As a dedicated backend developer, I have cultivated my expertise in PHP, with a particular focus on leveraging the Symfony framework. Through extensive project work and hands-on experience, I have mastered the intricacies of Symfony's architecture, including routing, controllers, and ORM. My proficiency extends to crafting scalable and efficient systems, ensuring seamless integration and optimal performance.",
+      "My primary stack. I've spent 4+ years building production backends with PHP 8 and Symfony — from architecting API Platform services and designing async workflows with Symfony Messenger, to hardening security and writing test suites that let teams ship without fear. I don't just know the framework; I know where it gets complex and how to keep it clean anyway.",
   },
   {
     s_no: "02",
-    s_name: "Python and Django",
+    s_name: "Cloud & DevOps",
     s_desc:
-      "In addition to PHP, I possess a strong command of Python and its ecosystem, including the Django platform. My experience extends beyond traditional web development, encompassing AI-related frameworks such as NumPy. This enables me to tackle complex data manipulation tasks and implement machine learning algorithms with precision and efficiency.",
+      "I've worked across AWS (EC2, S3, CloudFront) and Oracle Cloud to build storage pipelines, secure media delivery, and keep services running smoothly under seasonal traffic spikes. Docker is a daily tool, and I'm comfortable setting up Nginx, managing CI/CD flows, and thinking through infrastructure decisions — not just writing the code that runs on top of it.",
   },
   {
     s_no: "03",
-    s_name: "DevOps and Database",
+    s_name: "Databases & Messaging",
     s_desc:
-      "Throughout my career, I have immersed myself in the realm of database management, with expertise in MySQL and PostgreSQL. Moreover, I have honed my skills in DevOps practices, leveraging tools like GitHub, Bitbucket, and Jira to streamline project management and collaboration. Additionally, my proficiency in Amazon Web Services (AWS) extends to utilizing S3 buckets for seamless data storage and retrieval, ensuring optimal performance and scalability.",
+      "MySQL and PostgreSQL for relational data, Redis for caching, RabbitMQ for queuing, and Firebase where real-time sync is needed. I've optimized queries under load, introduced indexing strategies that cut response times during exam-season traffic spikes, and denormalized data where the read patterns demanded it.",
   },
   {
     s_no: "04",
-    s_name: "React, HTML, and CSS",
+    s_name: "Python & Django",
     s_desc:
-      "Complementing my backend expertise, I am well-versed in frontend technologies such as React, HTML, and CSS. Through hands-on projects in CRM and Ecommerce, I have gained practical experience in building responsive and intuitive user interfaces. My proficiency in frontend development allows me to seamlessly integrate frontend and backend components, delivering cohesive and user-friendly web applications.",
+      "Beyond PHP, I build with Python and Django — including a full-stack marketplace project with Django REST Framework, JWT auth, and PostgreSQL on AWS. My background in electrical engineering also gave me a foundation in NumPy and numerical computation, useful when data processing crosses into the ML space.",
   },
   {
     s_no: "05",
-    s_name: "Electrical Engineering",
+    s_name: "Testing & Code Quality",
     s_desc:
-      "Drawing upon my academic background in electrical engineering, I initially specialized in control systems. My research involved utilizing PSCAD to model wind turbine failures, providing insights into fault detection and mitigation strategies. While my career has transitioned into web development, my foundational knowledge in electrical engineering continues to inform my problem-solving approach and attention to detail.",
+      "I've built 100+ test suites covering unit, integration, functional, and smoke layers on live academic platforms where broken deploys aren't an option. Testing isn't an afterthought in how I work — it's how I make sure the next developer (or future me) can move fast without breaking things.",
   },
   {
     s_no: "06",
-    s_name: "Fitness and Football Enthusiast ",
+    s_name: "Football & Staying Sharp",
     s_desc:
-      "Away from technology, I love watching football games and am a die-hard supporter of Bayern Munich. In addition, I value physical fitness and look forward to working out frequently to keep up a healthy lifestyle. This devotion to mental and physical health highlights my pursuit of greatness in all spheres of life and promotes a well-rounded, all-encompassing approach to both professional and personal growth.",
+      "Outside of work, I'm a committed Bayern Munich supporter and a regular at the gym. I find that staying physically active keeps me mentally focused — there's a discipline to both that carries over. It's a small thing, but I think how someone spends their time away from the keyboard says something about how they show up at it.",
   },
 ];
 
