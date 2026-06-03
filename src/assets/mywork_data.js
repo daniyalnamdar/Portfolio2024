@@ -1,7 +1,7 @@
-import newProject from "./newProject.png";
 import mentora from "./mentora.png";
 import tercihbot from "./Tercihbot.png";
 import baumentora from "./BauMentora.png";
+import yadoInvest from "./yadoInvest.png";
 
 const mywork_data = [
   {
@@ -33,12 +33,12 @@ const mywork_data = [
   },
   {
     w_no: 4,
-    w_name: "Future Products",
+    w_name: "Yado Invest",
     w_desc:
-      "Application for Tracking your investments and assets (Coming Soon).",
+      "Mobile-first fintech platform available on iOS and Android. Designed and built the backend using PHP Symfony, PostgreSQL, Docker, Firebase, Cloudflare, and Hetzner. Features portfolio analytics, market data synchronization, subscriptions, push notifications, CI/CD, monitoring, backups, and infrastructure security.",
     w_github: "https://github.com/daniyalnamdar",
-    w_demo: "empty",
-    w_img: newProject,
+    w_demo: "https://yadoinvest.com/",
+    w_img: yadoInvest,
   },
 ];
 

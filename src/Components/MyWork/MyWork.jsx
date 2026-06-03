@@ -13,6 +13,142 @@ function cardSummary(text, max = 132) {
   return excerpt(text, max);
 }
 
+function demoOk(work) {
+  return work.w_demo && work.w_demo !== "empty";
+}
+
+/* eslint-disable react/prop-types -- modal receives typed work object from parent state */
+function ProjectDetailModal({ work, onClose, onGithub, onDemo }) {
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
+
+  const hasDemo = demoOk(work);
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-end justify-center p-0 sm:items-center sm:p-4 md:p-6"
+      role="presentation"
+      onClick={onClose}
+    >
+      <div
+        className="absolute inset-0 bg-void/85 backdrop-blur-md motion-safe:animate-modal-backdrop-in"
+        aria-hidden
+      />
+
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
+        className="relative flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-2xl border border-white/[0.1] bg-panel shadow-lift motion-safe:animate-modal-panel-in sm:rounded-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Hero — ambient image shade + sharp preview */}
+        <div className="relative shrink-0 overflow-hidden border-b border-white/[0.06]">
+          <div className="relative aspect-[16/10] min-h-[200px] sm:min-h-[240px]">
+            <img
+              src={work.w_img}
+              alt=""
+              aria-hidden
+              className="absolute inset-0 h-full w-full scale-[1.35] object-cover object-center opacity-[0.38] blur-2xl saturate-[1.15] motion-reduce:scale-100 motion-reduce:blur-none"
+            />
+            <img
+              src={work.w_img}
+              alt=""
+              aria-hidden
+              className="absolute inset-0 h-full w-full scale-125 object-cover object-center opacity-20 mix-blend-soft-light motion-reduce:hidden"
+            />
+
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-br from-void/70 via-panel/50 to-void/80"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_70%_at_50%_40%,rgba(46,230,168,0.08),transparent)]"
+              aria-hidden
+            />
+
+            <div className="absolute inset-0 flex items-center justify-center px-6 pb-14 pt-12 sm:px-10 sm:pb-16 sm:pt-14">
+              <div className="relative w-full max-w-md rounded-xl border border-white/[0.12] bg-void/40 p-2.5 shadow-[0_24px_80px_-20px_rgba(0,0,0,0.75)] ring-1 ring-white/[0.08] backdrop-blur-sm sm:max-w-lg sm:p-3">
+                <div className="overflow-hidden rounded-lg bg-gradient-to-br from-ink to-void">
+                  <img
+                    src={work.w_img}
+                    alt={work.w_name}
+                    className="mx-auto max-h-[min(220px,32vh)] w-full object-contain object-center sm:max-h-[min(260px,36vh)]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-4 px-5 py-4 sm:px-6">
+              <span className="rounded-full border border-white/10 bg-void/60 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-accent backdrop-blur-md">
+                #{String(work.w_no).padStart(2, "0")}
+              </span>
+              <button
+                type="button"
+                onClick={onClose}
+                className="rounded-lg border border-white/10 bg-void/60 px-3 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-400 backdrop-blur-md transition hover:border-accent/40 hover:text-accent"
+              >
+                Close
+              </button>
+            </div>
+
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-panel via-panel/95 to-transparent px-5 pb-5 pt-16 sm:px-8 sm:pb-6">
+              <h3
+                id="project-modal-title"
+                className="text-balance font-display text-xl font-semibold leading-snug text-white sm:text-2xl"
+              >
+                {work.w_name}
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        {/* Body */}
+        <div className="min-h-0 flex-1 overflow-y-auto px-5 py-6 sm:px-8 sm:py-7">
+          <p className="text-sm leading-relaxed text-slate-400 sm:text-[15px] sm:leading-7">
+            {work.w_desc}
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3 border-t border-white/[0.06] pt-7">
+            <button
+              type="button"
+              onClick={() => onGithub(work)}
+              className="inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3.5 font-mono text-xs font-semibold uppercase tracking-[0.15em] text-void transition hover:bg-accent-bright"
+            >
+              GitHub
+            </button>
+            <button
+              type="button"
+              disabled={!hasDemo}
+              onClick={() => onDemo(work)}
+              className={`inline-flex items-center justify-center rounded-xl border px-6 py-3.5 font-mono text-xs font-semibold uppercase tracking-[0.15em] ${
+                hasDemo
+                  ? "border-white/20 text-slate-200 hover:border-accent hover:text-accent"
+                  : "cursor-not-allowed border-white/10 text-slate-600"
+              }`}
+            >
+              Demo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function MyWork() {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedWork, setSelectedWork] = useState(null);
@@ -21,15 +157,6 @@ function MyWork() {
     setModalVisible(false);
     setSelectedWork(null);
   };
-
-  useEffect(() => {
-    if (!modalVisible) return undefined;
-    const onKey = (e) => {
-      if (e.key === "Escape") closeModal();
-    };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [modalVisible]);
 
   const openModal = (work) => {
     setSelectedWork(work);
@@ -51,7 +178,7 @@ function MyWork() {
   };
 
   const handleDemoClick = (work) => {
-    if (!work.w_demo || work.w_demo === "empty") return;
+    if (!demoOk(work)) return;
     ReactGA.event({
       category: "Portfolio",
       action: "Clicked Demo Button",
@@ -59,8 +186,6 @@ function MyWork() {
     });
     window.open(work.w_demo, "_blank");
   };
-
-  const demoOk = (work) => work.w_demo && work.w_demo !== "empty";
 
   return (
     <section id="work" className="border-b border-white/[0.06] bg-panel/25">
@@ -165,57 +290,12 @@ function MyWork() {
       </div>
 
       {modalVisible && selectedWork ? (
-        <div
-          className="fixed inset-0 z-[100] flex items-end justify-center bg-void/90 p-4 backdrop-blur-md sm:items-center"
-          role="presentation"
-          onClick={closeModal}
-        >
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="project-modal-title"
-            className="max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-2xl border border-white/12 bg-panel p-8 shadow-lift md:p-10"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-start justify-between gap-4">
-              <h3
-                id="project-modal-title"
-                className="text-balance font-mono text-xl font-semibold leading-snug text-white"
-              >
-                {selectedWork.w_name}
-              </h3>
-              <button
-                type="button"
-                onClick={closeModal}
-                className="shrink-0 font-mono text-xs uppercase tracking-[0.2em] text-slate-500 hover:text-accent"
-              >
-                Close
-              </button>
-            </div>
-            <p className="mt-8 text-sm leading-relaxed text-slate-400">{selectedWork.w_desc}</p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <button
-                type="button"
-                onClick={() => handleGithubClick(selectedWork)}
-                className="rounded-xl bg-accent px-6 py-3.5 font-mono text-xs font-medium uppercase tracking-[0.15em] text-void transition-colors hover:bg-accent-bright"
-              >
-                GitHub
-              </button>
-              <button
-                type="button"
-                disabled={!demoOk(selectedWork)}
-                onClick={() => handleDemoClick(selectedWork)}
-                className={`rounded-xl border px-6 py-3.5 font-mono text-xs font-medium uppercase tracking-[0.15em] ${
-                  demoOk(selectedWork)
-                    ? "border-white/20 text-slate-200 hover:border-accent hover:text-accent"
-                    : "cursor-not-allowed border-white/10 text-slate-600"
-                }`}
-              >
-                Demo
-              </button>
-            </div>
-          </div>
-        </div>
+        <ProjectDetailModal
+          work={selectedWork}
+          onClose={closeModal}
+          onGithub={handleGithubClick}
+          onDemo={handleDemoClick}
+        />
       ) : null}
     </section>
   );
