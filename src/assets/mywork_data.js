@@ -19,7 +19,7 @@ const mywork_data = [
     w_desc:
       "Architected the backend for a university-level language learning platform serving 2,400+ users across student, teacher, and admin roles. Built real-time student-teacher messaging and classroom notifications using Mercure — no page refreshes, no delays. Hardened media delivery on Oracle Cloud Object Storage by routing all file access through an Nginx proxy, eliminating direct endpoint exposure. Established a 100+ test suite spanning unit, integration, functional, and smoke layers so the team could ship to a live academic platform with confidence.",
     w_github: "https://github.com/daniyalnamdar",
-    w_demo: "https://baumentora.com/login",
+    w_demo: "https://bau.mymentora.com/login",
     w_img: baumentora,
   },
   {
