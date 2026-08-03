@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Wordmark from "../Wordmark";
+import ThemeLighter from "../ThemeLighter";
 import { NAV_OFFSET } from "../../constants/navigation";
 
 const LINKS = [
@@ -137,14 +138,15 @@ function Navbar() {
               </div>
             </nav>
 
-            <div className="hidden shrink-0 items-center gap-3 lg:flex">
+            <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+              <ThemeLighter />
               <AnchorLink
                 offset={NAV_OFFSET}
                 href="#contact"
-                className="rounded-full border border-accent/45 bg-accent/10 px-5 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-accent transition hover:bg-accent hover:text-void hover:shadow-[0_12px_40px_-12px_rgba(46,230,168,0.45)]"
+                className="hidden rounded-full border border-accent/45 bg-accent/10 px-5 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-accent transition hover:bg-accent hover:text-void hover:shadow-[0_12px_40px_-12px_rgba(46,230,168,0.45)] lg:block"
                 onClick={() => setActive("contact")}
               >
-                Connect With Me
+                Connect
               </AnchorLink>
             </div>
 
@@ -225,7 +227,7 @@ function Navbar() {
                 closeDrawer();
               }}
             >
-              Connect With Me
+              Connect
             </AnchorLink>
           </div>
         </aside>

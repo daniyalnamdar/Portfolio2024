@@ -2,13 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      try {
+        document.documentElement.dataset.theme = localStorage.getItem("dn-theme") === "light" ? "light" : "dark";
+      } catch (_) {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
     <link rel="icon" type="image/svg+xml" href="./dn-favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Daniyal Namdar — Backend Developer based in Turkey. Symfony, PHP, infrastructure."
+      content="Daniyal Namdar is a backend engineer building scalable PHP, Symfony, and AWS systems for SaaS and EdTech products serving 13,000+ users."
     />
-    <title>Daniyal Namdar</title>
+    <meta name="author" content="Daniyal Namdar" />
+    <meta property="og:title" content="Daniyal Namdar — Backend Engineer" />
+    <meta property="og:description" content="PHP, Symfony, and AWS systems from architecture to production." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.daniyalnamdar.com/" />
+    <title>Daniyal Namdar — Backend Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

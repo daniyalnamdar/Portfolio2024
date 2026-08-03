@@ -6,37 +6,81 @@ import yadoInvest from "./yadoInvest.png";
 const mywork_data = [
   {
     w_no: 1,
-    w_name: "K-12 Language Learning LMS – MyMentora",
-    w_desc:
-      "Built the entire backend from scratch for a K-12 language learning platform that now serves over 10,000 users — 9,000 students and 1,000 teachers. Designed multi-role access control, a full content delivery pipeline, and async workflows using Symfony Messenger and Mercure that cut large file upload times from 3–4 minutes to under one minute. Secured media delivery by migrating from public S3 buckets to CloudFront signed URLs with time-based expiry. Also integrated Apple and Google in-app purchase APIs to enable subscription monetization across iOS and Android.",
-    w_github: "https://github.com/daniyalnamdar",
+    w_name: "MyMentora",
+    w_type: "K–12 language-learning platform",
+    w_role: "Backend owner — architecture through deployment",
+    w_summary: "Built and scaled the complete backend for 10,000+ students and teachers.",
+    w_challenge:
+      "Support multiple user roles, protected learning content, large interactive files, and mobile subscriptions without making the platform difficult to operate.",
+    w_solution:
+      "Designed the APIs and access model, moved heavy file work into Symfony Messenger, added real-time Mercure notifications, and replaced public S3 delivery with expiring CloudFront signed URLs.",
+    w_impact: [
+      "Scaled from zero to 10,000+ users",
+      "Reduced 3–4 minute file processing to under one minute",
+      "Enabled Apple and Google subscription purchases",
+    ],
+    w_stack: ["PHP 8", "Symfony", "API Platform", "Docker", "AWS", "Mercure"],
+    w_code_note: "Commercial product — source code is private.",
     w_demo: "https://admin.mymentora.com/",
     w_img: mentora,
   },
   {
     w_no: 2,
-    w_name: "University LMS – BAU MyMentora",
-    w_desc:
-      "Architected the backend for a university-level language learning platform serving 2,400+ users across student, teacher, and admin roles. Built real-time student-teacher messaging and classroom notifications using Mercure — no page refreshes, no delays. Hardened media delivery on Oracle Cloud Object Storage by routing all file access through an Nginx proxy, eliminating direct endpoint exposure. Established a 100+ test suite spanning unit, integration, functional, and smoke layers so the team could ship to a live academic platform with confidence.",
-    w_github: "https://github.com/daniyalnamdar",
+    w_name: "BAU MyMentora",
+    w_type: "University learning-management platform",
+    w_role: "Backend architect and developer",
+    w_summary: "Architected a reliable LMS backend for 2,400+ university users.",
+    w_challenge:
+      "Deliver courses, assignments, messaging, and protected media to students and instructors on a live academic platform where regressions directly disrupt teaching.",
+    w_solution:
+      "Built the domain and API workflows, implemented real-time communication with Mercure, protected Oracle Cloud media behind Nginx, and established automated coverage across multiple test layers.",
+    w_impact: [
+      "Serves 2,000 students and 400 instructors",
+      "Real-time messaging without page refreshes",
+      "Suite of 100+ automated tests",
+    ],
+    w_stack: ["PHP 8.2", "Symfony 7", "MySQL", "Docker", "Oracle Cloud", "Nginx"],
+    w_code_note: "Commercial product — source code is private.",
     w_demo: "https://bau.mymentora.com/login",
     w_img: baumentora,
   },
   {
     w_no: 3,
-    w_name: "Student Placement Platform – TercihBot",
-    w_desc:
-      "Developed the full backend for a placement platform that helps 1,100+ students generate ranked school preference lists from national LGS exam results. Integrated Google OAuth alongside email and SMS notification flows to reduce onboarding friction and re-engage users during high-traffic exam seasons. Tackled seasonal traffic spikes with targeted database indexing and a denormalized school summary table — keeping query performance stable exactly when it mattered most.",
-    w_github: "https://github.com/daniyalnamdar",
+    w_name: "TercihBot",
+    w_type: "Student placement platform",
+    w_role: "Backend developer",
+    w_summary: "Built a data-heavy placement backend used by 1,100+ students.",
+    w_challenge:
+      "Turn national LGS examination data into responsive ranked preference lists while handling sharp seasonal traffic and time-sensitive user communication.",
+    w_solution:
+      "Implemented preference-generation APIs, Google OAuth, email and SMS journeys, then optimized critical reads with database indexes and denormalized summary tables.",
+    w_impact: [
+      "Used by 1,100+ students",
+      "Stable read performance during exam-season peaks",
+      "Lower-friction onboarding and re-engagement",
+    ],
+    w_stack: ["PHP 8.2", "Symfony 7", "MySQL", "Docker", "AWS", "Google OAuth"],
+    w_code_note: "Commercial product — source code is private.",
     w_demo: "https://tercihbot.com/",
     w_img: tercihbot,
   },
   {
     w_no: 4,
     w_name: "Yado Invest",
-    w_desc:
-      "Mobile-first fintech platform available on iOS and Android. Designed and built the backend using PHP Symfony, PostgreSQL, Docker, Firebase, Cloudflare, and Hetzner. Features portfolio analytics, market data synchronization, subscriptions, push notifications, CI/CD, monitoring, backups, and infrastructure security.",
-    w_github: "https://github.com/daniyalnamdar",
+    w_type: "Mobile-first fintech platform",
+    w_role: "Backend architect and developer",
+    w_summary: "Designed the backend and delivery infrastructure for an iOS and Android investment product.",
+    w_challenge:
+      "Coordinate portfolio analytics, market-data synchronization, subscriptions, notifications, and production operations across a mobile-first experience.",
+    w_solution:
+      "Built the Symfony and PostgreSQL backend, containerized delivery, integrated Firebase services, and implemented CI/CD, monitoring, backups, and infrastructure security.",
+    w_impact: [
+      "Production product on iOS and Android",
+      "Automated delivery and operational safeguards",
+      "Integrated subscriptions and push notifications",
+    ],
+    w_stack: ["PHP", "Symfony", "PostgreSQL", "Docker", "Firebase", "Cloudflare"],
+    w_code_note: "Commercial product — source code is private.",
     w_demo: "https://yadoinvest.com/",
     w_img: yadoInvest,
   },

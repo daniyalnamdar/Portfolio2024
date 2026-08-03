@@ -4,18 +4,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        void: "#070a12",
-        panel: "#0d121f",
-        ink: "#121826",
+        white: "rgb(var(--dn-white) / <alpha-value>)",
+        black: "rgb(var(--dn-black) / <alpha-value>)",
+        slate: {
+          100: "rgb(var(--dn-slate-100) / <alpha-value>)",
+          200: "rgb(var(--dn-slate-200) / <alpha-value>)",
+          300: "rgb(var(--dn-slate-300) / <alpha-value>)",
+          400: "rgb(var(--dn-slate-400) / <alpha-value>)",
+          500: "rgb(var(--dn-slate-500) / <alpha-value>)",
+          600: "rgb(var(--dn-slate-600) / <alpha-value>)",
+        },
+        void: "rgb(var(--dn-void) / <alpha-value>)",
+        panel: "rgb(var(--dn-panel) / <alpha-value>)",
+        ink: "rgb(var(--dn-ink) / <alpha-value>)",
         accent: {
-          DEFAULT: "#2ee6a8",
-          mute: "#1fa876",
-          bright: "#6effca",
+          DEFAULT: "rgb(var(--dn-accent) / <alpha-value>)",
+          mute: "rgb(var(--dn-accent-mute) / <alpha-value>)",
+          bright: "rgb(var(--dn-accent-bright) / <alpha-value>)",
           glow: "rgba(46, 230, 168, 0.35)",
           dim: "rgba(46, 230, 168, 0.12)",
         },
         signal: {
-          DEFAULT: "#6366f1",
+          DEFAULT: "rgb(var(--dn-signal) / <alpha-value>)",
           dim: "rgba(99, 102, 241, 0.2)",
         },
         amber: {

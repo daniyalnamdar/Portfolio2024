@@ -1,11 +1,18 @@
-import profile_img from "../../assets/test_profile_tall.jpg";
 import Reveal from "../Reveal";
 
-const SKILL_ROWS = [
-  { label: "PHP & Symfony", width: "90%" },
-  { label: "PYTHON & DJANGO ", width: "60%" },
-  { label: " React & MYSQL", width: "80%" },
-  { label: "HTML & CSS", width: "50%" },
+const EXPERTISE = [
+  {
+    label: "Backend architecture",
+    detail: "APIs, data models, access control, async workflows, and integrations.",
+  },
+  {
+    label: "Cloud delivery",
+    detail: "AWS, Oracle Cloud, Docker, Nginx, secure storage, and deployment.",
+  },
+  {
+    label: "Production quality",
+    detail: "Automated testing, performance tuning, observability, and maintainable code.",
+  },
 ];
 
 function About() {
@@ -15,7 +22,7 @@ function About() {
       className="relative border-b border-white/[0.06] bg-gradient-to-b from-panel/40 to-transparent"
       aria-labelledby="about-heading"
     >
-      <div className="shell py-20 md:py-28 lg:py-32">
+      <div className="shell py-14 md:py-18 lg:py-20">
         <Reveal>
           <header className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
@@ -30,45 +37,42 @@ function About() {
           </header>
         </Reveal>
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:gap-14">
-          <Reveal className="lg:col-span-5" delay={80}>
-            <div className="panel overflow-hidden rounded-2xl p-0 ring-1 ring-white/[0.05] transition hover:border-accent/25 hover:shadow-[0_24px_80px_-40px_rgba(46,230,168,0.18)]">
-              <img
-                src={profile_img}
-                alt=""
-                className="aspect-[3/4] w-full object-cover object-top"
-                loading="lazy"
-              />
-            </div>
-          </Reveal>
-
-          <div className="space-y-10 lg:col-span-7">
-            <Reveal delay={120}>
-              <div className="panel rounded-2xl p-8 ring-1 ring-white/[0.05] transition hover:border-white/[0.12] md:p-10">
-                <p className="text-base leading-relaxed text-slate-400 md:text-lg">
-                  I believe in the dynamic nature of our world and the ever-evolving technology
-                  landscape. To stay ahead of the curve, I consistently embrace the opportunity to
-                  adapt and learn new things. As a backend developer, I have honed my skills in PHP,
-                  particularly with the Symfony framework. Additionally, I am familiar with React,
-                  HTML, CSS, Python, and the Django platform, allowing me to navigate various aspects
-                  of web development.
-                </p>
+        <div className="mt-10 grid gap-6 lg:grid-cols-12">
+          <div className="lg:col-span-12 lg:grid lg:grid-cols-12 lg:gap-6">
+            <Reveal delay={120} className="lg:col-span-7">
+              <div className="panel h-full rounded-2xl p-7 ring-1 ring-white/[0.05] transition hover:border-white/[0.12] md:p-8">
+                <div className="space-y-4 text-sm leading-relaxed text-slate-400 md:text-base">
+                  <p>
+                    I&apos;m a backend engineer based in Ankara, focused on reliable PHP and Symfony
+                    systems that solve real product problems. At BK Mobil, I&apos;ve owned backend
+                    engineering across SaaS and EdTech products serving more than 13,000 users.
+                  </p>
+                  <p>
+                    My work covers the full delivery path: architecture, APIs, databases, cloud
+                    infrastructure, authentication, payments, asynchronous processing, automated
+                    testing, and deployment. I&apos;m most useful where a product needs both hands-on
+                    implementation and sound technical decisions.
+                  </p>
+                  <p>
+                    Before software engineering, I completed an M.Sc. in Electrical and Electronics
+                    Engineering at Bilkent University and published research in control systems. That
+                    background still shapes how I break down complex systems and validate solutions.
+                  </p>
+                </div>
               </div>
             </Reveal>
 
-            <Reveal delay={180}>
-              <div className="panel rounded-2xl p-8 ring-1 ring-white/[0.05] md:p-10">
-                <div className="space-y-8">
-                  {SKILL_ROWS.map((row) => (
-                    <div key={row.label}>
-                      <div className="flex justify-between font-mono text-[11px] uppercase tracking-[0.14em] text-slate-400">
-                        <span>{row.label}</span>
-                      </div>
-                      <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/[0.06]">
-                        <div
-                          className="h-full rounded-full bg-gradient-to-r from-accent via-signal to-accent-bright transition-[width] duration-1000 ease-out"
-                          style={{ width: row.width }}
-                        />
+            <Reveal delay={180} className="mt-6 lg:col-span-5 lg:mt-0">
+              <div className="panel h-full rounded-2xl p-7 ring-1 ring-white/[0.05] md:p-8">
+                <div className="space-y-5">
+                  {EXPERTISE.map((item, index) => (
+                    <div key={item.label} className="grid gap-2 border-b border-white/[0.06] pb-5 last:border-0 last:pb-0 sm:grid-cols-[auto_1fr] sm:gap-4">
+                      <span className="font-mono text-xs font-semibold text-accent">0{index + 1}</span>
+                      <div>
+                        <h3 className="font-mono text-sm font-semibold uppercase tracking-[0.12em] text-slate-200">
+                          {item.label}
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-slate-500">{item.detail}</p>
                       </div>
                     </div>
                   ))}
@@ -79,23 +83,23 @@ function About() {
         </div>
 
         <Reveal delay={100}>
-          <div className="mt-16 grid gap-8 rounded-2xl border border-white/[0.08] bg-panel/50 p-8 backdrop-blur-sm sm:grid-cols-3 sm:gap-4 md:p-12">
+          <div className="mt-8 grid gap-6 rounded-2xl border border-white/[0.08] bg-panel/50 p-6 backdrop-blur-sm sm:grid-cols-3 sm:gap-4 md:p-8">
             <div className="text-center sm:border-r sm:border-white/[0.06] sm:pr-6">
-              <p className="font-mono text-4xl font-semibold text-white md:text-5xl">3+</p>
+              <p className="font-mono text-3xl font-semibold text-white md:text-4xl">13K+</p>
               <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500">
-                YEARS OF EXPERIENCE
+                USERS ACROSS PRODUCTS
               </p>
             </div>
             <div className="text-center sm:border-r sm:border-white/[0.06] sm:px-6">
-              <p className="font-mono text-4xl font-semibold text-white md:text-5xl">2+</p>
+              <p className="font-mono text-3xl font-semibold text-white md:text-4xl">&lt;1m</p>
               <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500">
-                Research and Teaching Assistance
+                LARGE-FILE PROCESSING
               </p>
             </div>
             <div className="text-center sm:pl-6">
-              <p className="font-mono text-4xl font-semibold text-white md:text-5xl">10+</p>
+              <p className="font-mono text-3xl font-semibold text-white md:text-4xl">100+</p>
               <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500">
-                COMPLETED PROJECTS
+                AUTOMATED TESTS
               </p>
             </div>
           </div>

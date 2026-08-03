@@ -7,7 +7,6 @@ import MyWork from "./Components/MyWork/MyWork";
 import Contact from "./Components/Contact/Contact";
 import Footer from "./Components/Footer/Footer";
 import AmbientCursor from "./Components/AmbientCursor";
-import PagePreloader from "./Components/PagePreloader";
 import ReactGA from "react-ga4";
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
 
   return (
     <div className="relative min-h-screen bg-void">
-      <PagePreloader />
       <AmbientCursor />
       <a
         href="#main"

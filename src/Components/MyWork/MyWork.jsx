@@ -4,21 +4,12 @@ import arrow_icone from "../../assets/arrow_icon.svg";
 import ReactGA from "react-ga4";
 import Reveal from "../Reveal";
 
-function excerpt(text, max = 220) {
-  if (text.length <= max) return text;
-  return `${text.slice(0, max).trim()}…`;
-}
-
-function cardSummary(text, max = 132) {
-  return excerpt(text, max);
-}
-
 function demoOk(work) {
   return work.w_demo && work.w_demo !== "empty";
 }
 
 /* eslint-disable react/prop-types -- modal receives typed work object from parent state */
-function ProjectDetailModal({ work, onClose, onGithub, onDemo }) {
+function ProjectDetailModal({ work, onClose, onDemo }) {
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "Escape") onClose();
@@ -52,12 +43,12 @@ function ProjectDetailModal({ work, onClose, onGithub, onDemo }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="project-modal-title"
-        className="relative flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-2xl border border-white/[0.1] bg-panel shadow-lift motion-safe:animate-modal-panel-in sm:rounded-2xl"
+        className="relative flex max-h-[88vh] w-full max-w-4xl flex-col overflow-hidden rounded-t-2xl border border-white/[0.1] bg-panel shadow-lift motion-safe:animate-modal-panel-in sm:rounded-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Hero — ambient image shade + sharp preview */}
         <div className="relative shrink-0 overflow-hidden border-b border-white/[0.06]">
-          <div className="relative aspect-[16/10] min-h-[200px] sm:min-h-[240px]">
+          <div className="relative h-36 sm:h-40">
             <img
               src={work.w_img}
               alt=""
@@ -80,13 +71,13 @@ function ProjectDetailModal({ work, onClose, onGithub, onDemo }) {
               aria-hidden
             />
 
-            <div className="absolute inset-0 flex items-center justify-center px-6 pb-14 pt-12 sm:px-10 sm:pb-16 sm:pt-14">
+            <div className="absolute inset-0 flex items-center justify-end px-20 py-4 sm:px-28">
               <div className="relative w-full max-w-md rounded-xl border border-white/[0.12] bg-void/40 p-2.5 shadow-[0_24px_80px_-20px_rgba(0,0,0,0.75)] ring-1 ring-white/[0.08] backdrop-blur-sm sm:max-w-lg sm:p-3">
                 <div className="overflow-hidden rounded-lg bg-gradient-to-br from-ink to-void">
                   <img
                     src={work.w_img}
                     alt={work.w_name}
-                    className="mx-auto max-h-[min(220px,32vh)] w-full object-contain object-center sm:max-h-[min(260px,36vh)]"
+                  className="mx-auto max-h-24 w-full object-contain object-center sm:max-h-28"
                   />
                 </div>
               </div>
@@ -105,7 +96,7 @@ function ProjectDetailModal({ work, onClose, onGithub, onDemo }) {
               </button>
             </div>
 
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-panel via-panel/95 to-transparent px-5 pb-5 pt-16 sm:px-8 sm:pb-6">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-panel via-panel/95 to-transparent px-5 pb-4 pt-10 sm:px-6">
               <h3
                 id="project-modal-title"
                 className="text-balance font-display text-xl font-semibold leading-snug text-white sm:text-2xl"
@@ -117,30 +108,58 @@ function ProjectDetailModal({ work, onClose, onGithub, onDemo }) {
         </div>
 
         {/* Body */}
-        <div className="min-h-0 flex-1 overflow-y-auto px-5 py-6 sm:px-8 sm:py-7">
-          <p className="text-sm leading-relaxed text-slate-400 sm:text-[15px] sm:leading-7">
-            {work.w_desc}
+        <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:px-7 sm:py-6">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
+            {work.w_type}
           </p>
+          <p className="mt-3 text-base font-medium leading-relaxed text-slate-200">{work.w_summary}</p>
+          <p className="mt-2 text-sm text-slate-500">{work.w_role}</p>
 
-          <div className="mt-8 flex flex-wrap gap-3 border-t border-white/[0.06] pt-7">
-            <button
-              type="button"
-              onClick={() => onGithub(work)}
-              className="inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3.5 font-mono text-xs font-semibold uppercase tracking-[0.15em] text-void transition hover:bg-accent-bright"
-            >
-              GitHub
-            </button>
+          <div className="mt-5 grid gap-5 sm:grid-cols-2">
+            <div>
+              <h4 className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-300">Challenge</h4>
+              <p className="mt-3 text-sm leading-7 text-slate-400">{work.w_challenge}</p>
+            </div>
+            <div>
+              <h4 className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-300">Engineering approach</h4>
+              <p className="mt-3 text-sm leading-7 text-slate-400">{work.w_solution}</p>
+            </div>
+          </div>
+
+          <div className="mt-5 rounded-xl border border-accent/15 bg-accent/[0.04] p-4">
+            <h4 className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">Outcome</h4>
+            <ul className="mt-3 grid gap-2 sm:grid-cols-3">
+              {work.w_impact.map((item) => (
+                <li key={item} className="flex gap-3 text-sm leading-relaxed text-slate-300">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {work.w_stack.map((item) => (
+              <span key={item} className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono text-[10px] text-slate-400">
+                {item}
+              </span>
+            ))}
+          </div>
+
+          <p className="mt-4 text-xs italic text-slate-600">{work.w_code_note}</p>
+
+          <div className="mt-5 flex flex-wrap gap-3 border-t border-white/[0.06] pt-5">
             <button
               type="button"
               disabled={!hasDemo}
               onClick={() => onDemo(work)}
               className={`inline-flex items-center justify-center rounded-xl border px-6 py-3.5 font-mono text-xs font-semibold uppercase tracking-[0.15em] ${
                 hasDemo
-                  ? "border-white/20 text-slate-200 hover:border-accent hover:text-accent"
+                  ? "border-accent/40 bg-accent/10 text-accent hover:bg-accent hover:text-void"
                   : "cursor-not-allowed border-white/10 text-slate-600"
               }`}
             >
-              Demo
+              View Live Product
             </button>
           </div>
         </div>
@@ -168,15 +187,6 @@ function MyWork() {
     });
   };
 
-  const handleGithubClick = (work) => {
-    ReactGA.event({
-      category: "Portfolio",
-      action: "Clicked GitHub Button",
-      label: work.w_name,
-    });
-    window.open(work.w_github, "_blank");
-  };
-
   const handleDemoClick = (work) => {
     if (!demoOk(work)) return;
     ReactGA.event({
@@ -189,7 +199,7 @@ function MyWork() {
 
   return (
     <section id="work" className="border-b border-white/[0.06] bg-panel/25">
-      <div className="shell py-20 md:py-28 lg:py-32">
+      <div className="shell py-14 md:py-18 lg:py-20">
         <Reveal>
           <header className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
@@ -197,18 +207,18 @@ function MyWork() {
                 04 — shipped
               </p>
               <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white md:text-5xl">
-                My Latest Work
+                Selected Case Studies
               </h2>
             </div>
             <div className="h-px w-full max-w-md bg-gradient-to-r from-accent/80 via-signal to-transparent lg:mb-3" />
           </header>
         </Reveal>
 
-        <ul className="mt-14 grid list-none gap-6 sm:grid-cols-2 lg:mt-16 lg:gap-8">
+        <ul className="mt-10 grid list-none gap-5 sm:grid-cols-2 lg:gap-6">
           {mywork_data.map((work, index) => (
             <Reveal key={work.w_no} delay={index * 70} as="li" className="min-w-0">
               <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-panel/70 shadow-lift ring-1 ring-white/[0.04] transition hover:border-accent/25 hover:shadow-[0_28px_80px_-48px_rgba(46,230,168,0.2)]">
-                <div className="relative aspect-[16/10] bg-gradient-to-br from-void via-ink to-panel">
+                <div className="relative aspect-[16/7] bg-gradient-to-br from-void via-ink to-panel">
                   <img
                     src={work.w_img}
                     alt=""
@@ -228,7 +238,7 @@ function MyWork() {
                   />
                 </div>
 
-                <div className="flex flex-1 flex-col gap-4 border-t border-white/[0.06] p-5 md:p-6">
+                <div className="flex flex-1 flex-col gap-3 border-t border-white/[0.06] p-5">
                   <div>
                     <p className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-accent/90">
                       #{String(work.w_no).padStart(2, "0")}
@@ -238,20 +248,23 @@ function MyWork() {
                     </h3>
                   </div>
 
-                  <p className="line-clamp-3 text-sm leading-relaxed text-slate-400">
-                    {cardSummary(work.w_desc)}
+                  <p className="font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-slate-500">
+                    {work.w_type}
                   </p>
 
+                  <p className="text-sm leading-relaxed text-slate-300">
+                    {work.w_summary}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {work.w_impact.slice(0, 2).map((item) => (
+                      <span key={item} className="rounded-full border border-accent/15 bg-accent/[0.05] px-2.5 py-1 font-mono text-[9px] text-accent/90">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
                   <div className="mt-auto flex flex-wrap items-center gap-2">
-                    <a
-                      href={work.w_github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center justify-center rounded-lg border border-white/18 bg-white/[0.04] px-4 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-200 transition hover:border-accent/45 hover:text-accent"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      GitHub
-                    </a>
                     {demoOk(work) ? (
                       <a
                         href={work.w_demo}
@@ -260,11 +273,11 @@ function MyWork() {
                         className="inline-flex items-center justify-center rounded-lg border border-white/18 bg-white/[0.04] px-4 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-200 transition hover:border-accent/45 hover:text-accent"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        Demo
+                        Live Product
                       </a>
                     ) : (
                       <span className="inline-flex cursor-not-allowed items-center justify-center rounded-lg border border-white/[0.06] px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-600">
-                        Demo
+                        Private Product
                       </span>
                     )}
                     <button
@@ -282,8 +295,8 @@ function MyWork() {
         </ul>
 
         <Reveal delay={120}>
-          <div className="mt-14 flex items-center justify-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">
-            <span>Show More</span>
+          <div className="mt-8 flex items-center justify-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">
+            <span>Architecture · execution · outcomes</span>
             <img src={arrow_icone} alt="" className="h-3 w-3 opacity-60" />
           </div>
         </Reveal>
@@ -293,7 +306,6 @@ function MyWork() {
         <ProjectDetailModal
           work={selectedWork}
           onClose={closeModal}
-          onGithub={handleGithubClick}
           onDemo={handleDemoClick}
         />
       ) : null}
