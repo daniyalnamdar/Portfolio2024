@@ -74,6 +74,18 @@ body * {
   box-shadow: 0 24px 70px -42px rgba(15, 23, 42, 0.3);
 }
 
+.dn-mark__light {
+  display: none;
+}
+
+:root[data-theme="light"] .dn-mark__dark {
+  display: none;
+}
+
+:root[data-theme="light"] .dn-mark__light {
+  display: block;
+}
+
 @media (prefers-reduced-motion: reduce) {
   body,
   body * {

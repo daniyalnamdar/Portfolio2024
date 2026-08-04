@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import DNMark from "./DNMark";
 
 const MIN_VISIBLE_MS = 850;
 const EXIT_MS = 480;
@@ -91,9 +92,7 @@ export default function PagePreloader() {
             className="absolute inset-[3px] rounded-[0.85rem] border border-white/[0.06] bg-panel/90 backdrop-blur-sm"
             aria-hidden
           />
-          <span className="relative font-mono text-xl font-bold tracking-tighter text-accent sm:text-2xl">
-            DN
-          </span>
+          <DNMark className="relative w-16 text-slate-100 sm:w-20" title="Daniyal Namdar" />
         </div>
 
         <p className="mt-8 font-display text-xs font-semibold uppercase tracking-[0.42em] text-slate-500">
