@@ -2,10 +2,65 @@ import mentora from "./mentora.png";
 import tercihbot from "./Tercihbot.png";
 import baumentora from "./BauMentora.png";
 import yadoInvest from "./yadoInvest.png";
+import metodbox from "./metodbox-login.png";
+import documentAnalyze from "./document-analyze-login.png";
 
 const mywork_data = [
   {
     w_no: 1,
+    w_name: "Metodbox",
+    w_type: "Multi-tenant education platform",
+    w_role: "Contributing Backend Developer",
+    w_summary:
+      "Contributed admin tooling, reporting, and production fixes to an established platform serving 100,000 students and teachers.",
+    w_challenge:
+      "Extend a live, multi-tenant microservices platform safely while keeping user administration, reporting, and recurring production issues manageable across service boundaries.",
+    w_solution:
+      "Built admin dashboards for two microservices, integrated user creation and management with the IAM microservice, added reporting functionality, and resolved recurring Sentry issues involving null values, deprecated services, and missing error messages.",
+    w_impact: [
+      "Platform serving 100,000 students and teachers",
+      "Admin dashboards for two microservices",
+      "Sentry-led fixes for recurring production issues",
+    ],
+    w_stack: ["PHP 8", "Symfony 5.4", "Microservices", "IAM", "Sentry"],
+    w_code_note: "Commercial product — source code is private.",
+    w_demo: "https://web.metodbox.com/login",
+    w_img: metodbox,
+  },
+  {
+    w_no: 2,
+    w_name: "Document Analyze",
+    w_type: "AI-powered educational book review platform",
+    w_role: "Full-Stack Developer at Bk Mobil",
+    w_summary:
+      "Collaborated with an AI developer to turn page-by-page book review into a reliable, permission-aware workflow for publishers and education teams.",
+    w_challenge:
+      "Coordinate long-running text and visual analysis across entire PDF books while preserving tenant isolation, criteria versions, earlier findings, and clear recovery paths when individual stages fail.",
+    w_solution:
+      "Contributed across React, Symfony, and Python services to analysis dashboards, version comparison, multi-tenant APIs, permissions, retries, cancellation, stage-level diagnostics, model configuration, AWS storage, and PDF/DOCX report workflows.",
+    w_impact: [
+      "Page-level findings with version history",
+      "Targeted retries, cancellation, and stage-level diagnostics",
+      "Review feedback and downloadable PDF/DOCX reports",
+    ],
+    w_stack: [
+      "React",
+      "TypeScript",
+      "Symfony 7",
+      "PHP",
+      "Python",
+      "FastAPI",
+      "MySQL",
+      "Messenger",
+      "AWS",
+      "Docker",
+    ],
+    w_code_note: "Commercial product — source code and application access are private.",
+    w_demo: "empty",
+    w_img: documentAnalyze,
+  },
+  {
+    w_no: 3,
     w_name: "MyMentora",
     w_type: "K–12 language-learning platform",
     w_role: "Backend owner — architecture through deployment",
@@ -25,7 +80,7 @@ const mywork_data = [
     w_img: mentora,
   },
   {
-    w_no: 2,
+    w_no: 4,
     w_name: "BAU MyMentora",
     w_type: "University learning-management platform",
     w_role: "Backend architect and developer",
@@ -45,7 +100,7 @@ const mywork_data = [
     w_img: baumentora,
   },
   {
-    w_no: 3,
+    w_no: 5,
     w_name: "TercihBot",
     w_type: "Student placement platform",
     w_role: "Backend developer",
@@ -65,7 +120,7 @@ const mywork_data = [
     w_img: tercihbot,
   },
   {
-    w_no: 4,
+    w_no: 6,
     w_name: "Yado Invest",
     w_type: "Mobile-first fintech platform",
     w_role: "Backend architect and developer",

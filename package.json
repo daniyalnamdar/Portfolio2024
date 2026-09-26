@@ -10,6 +10,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "test": "node --test tests/*.test.mjs",
     "preview": "vite preview",
     "start": "node --unhandled-rejections=strict server.js"
   },

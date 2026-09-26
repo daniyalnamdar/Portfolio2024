@@ -51,21 +51,29 @@ function Contact() {
                 Let&apos;s build something reliable
               </h3>
               <p className="mt-8 text-base leading-relaxed text-slate-400 md:text-lg">
-                Whether you want to discuss backend architecture, exchange ideas, or explore a
-                collaboration, feel free to get in touch.
+                Whether you want to discuss backend architecture, exchange
+                ideas, or explore a collaboration, feel free to get in touch.
               </p>
               <ul className="mt-12 space-y-8">
                 <li className="flex items-start gap-5">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04]">
-                    <img src={mail_icon} alt="" className="h-6 w-6 opacity-90 invert" />
+                    <img
+                      src={mail_icon}
+                      alt=""
+                      className="h-6 w-6 opacity-90 invert"
+                    />
                   </div>
                   <p className="pt-2 font-mono text-sm text-slate-300 md:text-base">
-                    daniyal.namdar@gmail.com
+                    contact@daniyalnamdar.com
                   </p>
                 </li>
                 <li className="flex items-start gap-5">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04]">
-                    <img src={location_icon} alt="" className="h-6 w-6 opacity-90 invert" />
+                    <img
+                      src={location_icon}
+                      alt=""
+                      className="h-6 w-6 opacity-90 invert"
+                    />
                   </div>
                   <p className="pt-2 font-mono text-sm text-slate-300 md:text-base">
                     Ankara, Türkiye
